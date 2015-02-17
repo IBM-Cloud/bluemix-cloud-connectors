@@ -1,0 +1,2 @@
+net.bluemix.connectors.core.creator.CouchDbInstanceCreator
+net.bluemix.connectors.core.creator.TwilioRestClientCreator
