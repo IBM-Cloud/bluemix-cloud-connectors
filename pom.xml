@@ -54,4 +54,7 @@
   <scm>
   	<url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors</url>
   </scm>
+  <ciManagement>
+  	<url>https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors</url>
+  </ciManagement>
 </project>
