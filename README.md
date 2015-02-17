@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors)
+
 ## About
 This project is meant to simplify the way Java developers access services
 when deploying apps to IBM Bluemix.  When leveraging a bound service in an app
