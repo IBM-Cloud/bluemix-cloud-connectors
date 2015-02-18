@@ -30,7 +30,7 @@ public class SendGridLocalConfigServiceInfoCreator extends LocalConfigServiceInf
    * Constructor.
    */
   public SendGridLocalConfigServiceInfoCreator() {
-    super(SmtpServiceInfo.URI_SCHEME);
+    super(SmtpServiceInfo.SMTP_SCHEME);
   }
 
   @Override

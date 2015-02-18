@@ -26,13 +26,52 @@
   </modules>
   
   <!-- ====================================================================== -->
+  <!-- CI  M A N A G E M E N T -->
+  <!-- ====================================================================== -->
+  <ciManagement>
+  	<url>https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors</url>
+  </ciManagement>
+  
+  <!-- ====================================================================== -->
+  <!-- S C M -->
+  <!-- ====================================================================== -->
+  <scm>
+    <url>git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</url>
+    <connection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</connection>
+    <developerConnection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <!-- ====================================================================== -->
+  <!-- I S S U E    M A N A G E M E N T -->
+  <!-- ====================================================================== -->
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors/issues</url>
+  </issueManagement>
+  
+  <!-- ====================================================================== -->
+  <!-- D I S T R I B U T I O N  M A N A G E M E N T -->
+  <!-- ====================================================================== -->
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  <properties>
+  	<spring.cloud.connectors.version>1.1.1.RELEASE</spring.cloud.connectors.version>
+  </properties>
+  
+  <!-- ====================================================================== -->
   <!-- D E P E N D E N C I E S -->
   <!-- ====================================================================== -->
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-core</artifactId>
-      <version>1.1.0.RELEASE</version>
+      <version>${spring.cloud.connectors.version}</version>
     </dependency>
     <dependency>
       <groupId>org.ektorp</groupId>
@@ -51,16 +90,6 @@
 	  <scope>test</scope>
     </dependency>
   </dependencies>
-  
-  <!-- ====================================================================== -->
-  <!-- D I S T R I B U T I O N  M A N A G E M E N T -->
-  <!-- ====================================================================== -->
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
   
   <!-- ====================================================================== -->
   <!-- B U I L D -->
@@ -132,18 +161,4 @@
       </build>
     </profile>
   </profiles>
-  
-  <!-- ====================================================================== -->
-  <!-- S C M -->
-  <!-- ====================================================================== -->
-  <scm>
-  	<url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors</url>
-  </scm>
-  
-  <!-- ====================================================================== -->
-  <!-- CI  M A N A G E M E N T -->
-  <!-- ====================================================================== -->
-  <ciManagement>
-  	<url>https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors</url>
-  </ciManagement>
 </project>
