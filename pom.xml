@@ -19,6 +19,35 @@
   <artifactId>bluemix-cloud-connectors</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>bluemix-cloud-connectors</name>
+  <description>Libraries to help apps deployed to Bluemix access service credentials.</description>
+  <url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors</url>
+  
+  <!-- ====================================================================== -->
+  <!-- L I C E N S E S -->
+  <!-- ====================================================================== -->
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  
+  <!-- ====================================================================== -->
+  <!-- D E V E L O P E R S -->
+  <!-- ====================================================================== -->
+  <developers>
+    <developer>
+      <name>Ryan Baxter</name>
+      <email>rbaxter85@apache.org</email>
+      <organization>IBM</organization>
+      <organizationUrl>http://ibm.com</organizationUrl>
+    </developer>
+  </developers>
+  
+  <!-- ====================================================================== -->
+  <!-- M O D U L E S -->
+  <!-- ====================================================================== -->
   <modules>
   	<module>bluemix-cloud-connectors-core</module>
   	<module>bluemix-cloud-connectors-local</module>
@@ -58,8 +87,15 @@
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
   </distributionManagement>
   
+  <!-- ====================================================================== -->
+  <!-- P R O P E R T I E S -->
+  <!-- ====================================================================== -->
   <properties>
   	<spring.cloud.connectors.version>1.1.1.RELEASE</spring.cloud.connectors.version>
   </properties>
@@ -156,6 +192,17 @@
                 </goals>
               </execution>
             </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>2.5</version>
+            <configuration>
+              <autoVersionSubmodules>true</autoVersionSubmodules>
+              <useReleaseProfile>false</useReleaseProfile>
+              <releaseProfiles>release</releaseProfiles>
+              <goals>deploy</goals>
+            </configuration>
           </plugin>
         </plugins>
       </build>
