@@ -138,8 +138,43 @@ protocol (which is something we made up), for example `couchdb://user:pass@local
 
 The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately Twilio operates over
 HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `twilio`
-protocol (which is something we made up), for example `twilio://user:pass@localhost:5984`.  
+protocol (which is something we made up), for example `twilio://user:pass@localhost:5984`.
 
+## Development
+
+Please use the GitHub pull request model for developement.  In other words, fork this project and submit a pull request if you want to change anything.
+
+### Builds
+
+When your code is merged you should monitor the builds in [Travis CI](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors).
+
+### Snapshot Builds
+
+The Travis CI build will automatically deploy a snapshot build to the [Sonatype Snapshot Maven Resitory](https://oss.sonatype.org/content/repositories/snapshots).  To use the snapshots in your projects add the following repository to your Maven POM (use similar settings if you are using Gradgle)
+
+```
+  <repositories>
+    <repository>
+      <id>ossrh-snapshots</id>
+      <name>OSSRH Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+```
+
+### Releases
+Only authorized users can do releases.  To do a release follow the steps below.
+
+```
+$ mvn release:clean -P release
+$ mvn release:prepare -P release
+$ mvn release:perform -P release
+```
+
+This will create a tag in the GitHub repo for the release and also push all (signed) artifacts to the [Sonatype Releases Repo](https://oss.sonatype.org/content/repositories/releases/).  This repo will be synced with the Maven central repo once every ten minutes.  For more information see the [Sonatype documentation](http://central.sonatype.org/pages/ossrh-guide.html).
 
 ## License
 
