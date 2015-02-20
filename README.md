@@ -45,9 +45,30 @@ connection to local or remote services via a properties file instead of configur
 
 Add the following dependency to you Maven/Gradle project.
 
-TODO Add code
+```
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
+      <version>0.0.1.RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-local</artifactId>
+      <version>0.0.1.RC2</version>
+    </dependency>
+```
 
-Alternatively you can download the jar from here.
+If you are building a Spring app you will also need to add the following Sping Cloud Connectors dependency.
+
+```
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-spring-service-connector</artifactId>
+      <version>1.1.0.RELEASE</version>
+    </dependency>
+```
+
+Alternatively you can download the jars from [here](https://oss.sonatype.org/content/repositories/releases/net/bluemix/).
 
 ### Accessing The Service Credentials In A Non-Spring App
 In a non-Spring app you can easily access the credentials of a service from a ServiceInfo class.
