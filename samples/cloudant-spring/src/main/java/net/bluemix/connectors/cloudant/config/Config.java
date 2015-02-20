@@ -15,31 +15,21 @@
  */
 package net.bluemix.connectors.cloudant.config;
 
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.ektorp.CouchDbInstance;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
-import org.springframework.cloud.config.java.ServiceScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
 public class Config {
-  
   @Configuration
-  //@Profile("cloud")
-  @ServiceScan
   static class CloudConfiguration extends AbstractCloudConfig {
-    // If you don't want to rely on @ServiceScan finding bound services and creating
-    // the right beans you can uncomment the methods below.
-    
     @Bean
     public CouchDbInstance couchDbInstance() throws NamingException {
       CouchDbInstance instance = connectionFactory().service(CouchDbInstance.class);
       return instance;
-//      return (CouchDbInstance) new InitialContext().lookup("java:comp/env/couchdb/status-db");
     }
-    
   }
 }
