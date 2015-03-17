@@ -97,7 +97,7 @@
   <!-- P R O P E R T I E S -->
   <!-- ====================================================================== -->
   <properties>
-  	<spring.cloud.connectors.version>1.1.0.RELEASE</spring.cloud.connectors.version>
+  	<spring.cloud.connectors.version>1.1.1.RELEASE</spring.cloud.connectors.version>
   </properties>
   
   <!-- ====================================================================== -->
