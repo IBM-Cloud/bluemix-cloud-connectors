@@ -97,8 +97,6 @@
             <version>1.0.5</version>
             <configuration>
               <target>https://api.ng.bluemix.net</target>
-              <username>${username}</username>
-              <password>${password}</password>
               <appname>cloudant-connector-sample</appname>
               <org>${org}</org>
               <space>${space}</space>

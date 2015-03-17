@@ -33,7 +33,7 @@ Once the server is started navigate to [http://localhost:8080](http://localhost:
 ## Deploying To Bluemix
 Run the following Maven profile
 ```
-mvn -P deploy -Dusername=bluemixUsername -Dpassword=bluemixPassword -Dorg=bluemixOrg -Dspace=bluemixSpace
+mvn -P deploy -Dcf.username=myusername -Dcf.password=mypassword -Dorg=bluemixOrg -Dspace=bluemixSpace
 ```
 
 Replace the properties with your Bluemix username and password as well as your organization name and space.
