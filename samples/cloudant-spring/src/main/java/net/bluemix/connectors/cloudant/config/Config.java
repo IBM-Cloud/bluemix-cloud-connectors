@@ -15,8 +15,6 @@
  */
 package net.bluemix.connectors.cloudant.config;
 
-import javax.naming.NamingException;
-
 import org.ektorp.CouchDbInstance;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +25,7 @@ public class Config {
   @Configuration
   static class CloudConfiguration extends AbstractCloudConfig {
     @Bean
-    public CouchDbInstance couchDbInstance() throws NamingException {
+    public CouchDbInstance couchDbInstance() {
       CouchDbInstance instance = connectionFactory().service(CouchDbInstance.class);
       return instance;
     }
