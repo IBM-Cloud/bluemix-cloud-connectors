@@ -42,6 +42,8 @@ public class CouchDbLocalConfigServiceInfoCreatorTest {
     assertEquals(new CloudantServiceInfo("cloudant", "user", "password", "user.cloudant.com", -1, "http://user:password@user.cloudant.com"), info);
     info = creator.createServiceInfo("cloudant", "couchdb://localhost:5984");
     assertEquals(new CloudantServiceInfo("cloudant", null, null, "localhost", 5984, "http://localhost:5984"), info);
+    info = creator.createServiceInfo("cloudant", "couchdb://couchdb:1234");
+    assertEquals(new CloudantServiceInfo("cloudant", null, null, "couchdb", 1234, "http://couchdb:1234"), info);
   }
 
 }

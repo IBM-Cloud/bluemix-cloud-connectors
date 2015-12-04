@@ -59,7 +59,7 @@ public class CloudantServiceInfo extends BaseServiceInfo {
 	public CloudantServiceInfo(String id, String url) throws URISyntaxException {
 	  super(id);
 	  URI uri = new URI(url);
-	  this.url = url.replace(CloudantServiceInfo.CLOUDANT_SCHEME, "http");
+	  this.url = url.replaceFirst(CloudantServiceInfo.CLOUDANT_SCHEME, "http");
 	  this.host = uri.getHost();
 	  this.port = uri.getPort();
 	  String serviceInfoString = uri.getUserInfo();
