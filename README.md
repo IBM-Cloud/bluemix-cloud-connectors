@@ -49,12 +49,12 @@ Add the following dependency to you Maven/Gradle project.
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
-      <version>0.0.1.RC4</version>
+      <version>0.0.1.RC5</version>
     </dependency>
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-local</artifactId>
-      <version>0.0.1.RC4</version>
+      <version>0.0.1.RC5</version>
     </dependency>
 ```
 
