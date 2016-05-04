@@ -17,7 +17,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.bluemix</groupId>
   <artifactId>bluemix-cloud-connectors</artifactId>
-  <version>0.0.1.RC6</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>bluemix-cloud-connectors</name>
   <description>Libraries to help apps deployed to Bluemix access service credentials.</description>
@@ -68,7 +68,7 @@
     <url>git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</url>
     <connection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</connection>
     <developerConnection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</developerConnection>
-    <tag>bluemix-cloud-connectors-0.0.1.RC6</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <!-- ====================================================================== -->
