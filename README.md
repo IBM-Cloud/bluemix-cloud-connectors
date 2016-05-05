@@ -49,12 +49,12 @@ Add the following dependency to you Maven/Gradle project.
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
-      <version>0.0.1.RC5</version>
+      <version>0.0.1.RC6</version>
     </dependency>
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-local</artifactId>
-      <version>0.0.1.RC5</version>
+      <version>0.0.1.RC6</version>
     </dependency>
 ```
 
@@ -64,7 +64,7 @@ If you are building a Spring app you will also need to add the following Sping C
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-spring-service-connector</artifactId>
-      <version>1.2.0.RELEASE</version>
+      <version>1.2.2.RELEASE</version>
     </dependency>
 ```
 
