@@ -1,3 +1,4 @@
 net.bluemix.connectors.local.CouchDbLocalConfigServiceInfoCreator
 net.bluemix.connectors.local.SendGridLocalConfigServiceInfoCreator
 net.bluemix.connectors.local.TwilioLocalConfigServiceInfoCreator
+net.bluemix.connectors.local.IBMGraphDbLocalConfigServiceInfoCreator

@@ -1,3 +1,4 @@
 net.bluemix.connectors.cloudfoundry.creator.CloudantServiceInfoCreator
 net.bluemix.connectors.cloudfoundry.creator.SendGridServiceInfoCreator
 net.bluemix.connectors.cloudfoundry.creator.TwilioServiceInfoCreator
+net.bluemix.connectors.cloudfoundry.creator.IBMGraphDbServiceInfoCreator
