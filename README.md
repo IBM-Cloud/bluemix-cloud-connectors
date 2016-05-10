@@ -13,9 +13,9 @@ service you bound.
 5.  Use the services Java client libraries to interact with that service.
 
 Since these steps are pretty much repeated multiple times across all Java apps it is a great
-opportunity to create a library that takes care of writing this mundane code.  The 
-[Spring Cloud Connectors project](http://cloud.spring.io/spring-cloud-connectors/) 
-already does this for [some services](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-cloudfoundry-connector) 
+opportunity to create a library that takes care of writing this mundane code.  The
+[Spring Cloud Connectors project](http://cloud.spring.io/spring-cloud-connectors/)
+already does this for [some services](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-cloudfoundry-connector)
 that are common across all Cloud Foundry deployments.  However there are many services in Bluemix
 that are not part of this project.  This project builds upon the Spring Cloud Connectors
 project and provides connectors for the services within Bluemix.
@@ -25,16 +25,16 @@ In addition to the services supported by the Spring Cloud Connectors project the
 Bluemix Cloud Connectors project supports the following services
 
 * Cloudant - via the [Ektorp library](http://ektorp.org/)
-* SendGrid - SendGrid is already supported by the Spring Cloud Connectors project but due to 
+* SendGrid - SendGrid is already supported by the Spring Cloud Connectors project but due to
 the way the service credentials are created in VCAP_SERVICES it did not work
 * Twilio - via the [Twilio client library](https://www.twilio.com/docs/java/install)
 
 ## When To Use This Project
-If you are using the Liberty Runtime in Bluemix you can take advantage of the 
+If you are using the Liberty Runtime in Bluemix you can take advantage of the
 [auto-configuration](https://www.ng.bluemix.net/docs/#starters/liberty/index.html#automaticconfigurationofboundservices)
 features which may do the same thing as this project so it doesn't make sense to use this
 project in your app in that case.  However if you are not using the Liberty Runtime and you are using
-another Java buildpack to run your application than this library might make sense.  Also if you want to 
+another Java buildpack to run your application than this library might make sense.  Also if you want to
 use the Liberty buildpack but want the application to manage the connection to the service than this might
 also be a situation when you might want to use this library.  In addition when developing locally you can configure
 connection to local or remote services via a properties file instead of configuring the server itself.
@@ -49,12 +49,12 @@ Add the following dependency to you Maven/Gradle project.
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
-      <version>0.0.1.RC5</version>
+      <version>0.0.1.RC6</version>
     </dependency>
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-local</artifactId>
-      <version>0.0.1.RC5</version>
+      <version>0.0.1.RC6</version>
     </dependency>
 ```
 
@@ -64,7 +64,7 @@ If you are building a Spring app you will also need to add the following Sping C
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-spring-service-connector</artifactId>
-      <version>1.2.0.RELEASE</version>
+      <version>1.2.2.RELEASE</version>
     </dependency>
 ```
 
@@ -95,7 +95,7 @@ String serviceId = "cloudant-db";
 CouchDbInstance couchDb = cloud.getServiceConnector(serviceId, CouchDbInstance.class, null /* default config */);
 ```
 
-For more detailed information on how this works you should read the 
+For more detailed information on how this works you should read the
 [Spring Cloud Connectors documentation](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-core).
 
 There is a sample JEE app using the Bluemix Cloud Connectors project in the samples/cloudant-liberty folder.
@@ -105,7 +105,7 @@ When you are using Spring you can easily create beans for services you have boun
 
 ```
 public class Config {
-  
+
   @Configuration
   static class CloudConfiguration extends AbstractCloudConfig {
     @Bean
@@ -118,7 +118,7 @@ public class Config {
 ```
 
 This bean can now be injected into other classes and used to access the service bound to your application.
-For more detailed information see the 
+For more detailed information see the
 [Spring Cloud Connectors documentation](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-spring-service-connector).
 
 There is a sample Spring app using the Bluemix Cloud Connectors project in the samples/cloudant-spring folder.
@@ -126,8 +126,8 @@ There is a sample Spring app using the Bluemix Cloud Connectors project in the s
 ### When Running Locally
 When building apps for Bluemix, you usually want to also run your application locally during
 development.  Developers have come up with various ways of achieving this.  Some set a VCAP_SERVICES environment
-variable on their development machine.  Others write code that tries to determine if the application is running 
-locally or in the cloud.  In Spring you can use something like Spring profiles to enable certain configuration beans 
+variable on their development machine.  Others write code that tries to determine if the application is running
+locally or in the cloud.  In Spring you can use something like Spring profiles to enable certain configuration beans
 when running in the cloud and running locally.  
 
 The Spring Cloud Connectors project has a simple way of allowing developers
@@ -140,8 +140,8 @@ properties file which will contain the credentials to the service to use when ru
 `spring-cloud-bootstrap.properties` file.
 
     spring.cloud.propertiesFile: ${user.home}/.config/cloudant-connector-sample/spring-cloud.properties
-    
-The properties file containing the service credentials should contain 2 properties `spring.cloud.appId` and 
+
+The properties file containing the service credentials should contain 2 properties `spring.cloud.appId` and
 `spring.cloud.{id}` where {id} is the service ID you are using for your service in the cloud.  The `spring.cloud.appId`
 property should be a unique id for your app.  The `spring.cloud.{id}` should be a URL to your service including any credentials
 needed to access the service. Here is a sample
