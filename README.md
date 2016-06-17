@@ -24,7 +24,7 @@ project and provides connectors for the services within Bluemix.
 In addition to the services supported by the Spring Cloud Connectors project the
 Bluemix Cloud Connectors project supports the following services
 
-* Cloudant - via the [Ektorp library](http://ektorp.org/)
+* Cloudant - via the supported [java-cloudant library](https://github.com/cloudant/java-cloudant) and the unsupported [Ektorp library](http://ektorp.org/)
 * SendGrid - SendGrid is already supported by the Spring Cloud Connectors project but due to
 the way the service credentials are created in VCAP_SERVICES it did not work
 * Twilio - via the [Twilio client library](https://www.twilio.com/docs/java/install)

@@ -1,3 +1,4 @@
+net.bluemix.connectors.core.creator.CloudantClientInstanceCreator
 net.bluemix.connectors.core.creator.CouchDbInstanceCreator
 net.bluemix.connectors.core.creator.TwilioRestClientCreator
 net.bluemix.connectors.core.creator.V3InstanceCreator

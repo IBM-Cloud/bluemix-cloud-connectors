@@ -1,0 +1,185 @@
+<!--
+ * Copyright IBM Corp. 2015
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.bluemix.connectors.cloudant</groupId>
+  <artifactId>java-cloudant-connector-spring-sample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <packaging>${packaging.type}</packaging>
+  
+  <!-- ====================================================================== -->
+  <!-- P A R E N T -->
+  <!-- ====================================================================== -->
+  <!-- Inherit defaults from Spring Boot -->
+ 	<parent>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-parent</artifactId>
+	  <version>1.3.0.RELEASE</version>
+	  <relativePath /> <!-- lookup parent from repository -->
+	</parent>
+  
+  <!-- ====================================================================== -->
+  <!-- P R O P E R T I E S -->
+  <!-- ====================================================================== -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <start-class>net.bluemix.connectors.cloudant.App</start-class>
+    <java.version>1.7</java.version>
+    <packaging.type>jar</packaging.type>
+  </properties>
+
+  <!-- ====================================================================== -->
+  <!-- D E P E N D E N C I E S -->
+  <!-- ====================================================================== -->
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+	<dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-spring-service-connector</artifactId>
+    </dependency> 
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-local</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <!-- ====================================================================== -->
+  <!-- P R O F I L E S -->
+  <!-- ====================================================================== -->
+  <profiles>
+    <profile>
+      <id>deploy</id>
+      <properties>
+        <packaging.type>war</packaging.type>
+      </properties>
+      <dependencies>
+        <!-- Since we are packaging as a war when we deploy to Bluemix exclude the Tomcat dependencies, the container
+        we run in has everything we need. -->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.cloudfoundry</groupId>
+            <artifactId>cf-maven-plugin</artifactId>
+            <version>1.0.5</version>
+            <configuration>
+              <target>https://api.ng.bluemix.net</target>
+              <appname>cloudant-connector-sample</appname>
+              <org>${org}</org>
+              <space>${space}</space>
+              <instances>1</instances>
+              <memory>512</memory>
+              <url>cloudant-connector-sample-${randomWord}.mybluemix.net</url>
+              <services>
+                <service>
+                  <name>status-db</name>
+                  <plan>Shared</plan>
+                  <label>cloudantNoSQLDB</label>
+                </service>
+              </services>
+              <env>
+                <!-- Sets the cloud profile when the app is deployed -->
+                <SPRING_PROFILES_ACTIVE>cloud</SPRING_PROFILES_ACTIVE>
+              </env>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>push</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>2.5</version>
+            <executions>
+              <execution>
+                <id>auto-clean</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>run</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>2.5</version>
+            <executions>
+              <execution>
+                <id>auto-clean</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <!-- ====================================================================== -->
+  <!-- B U I L D -->
+  <!-- ====================================================================== -->
+  <!-- Package as an executable jar -->
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
