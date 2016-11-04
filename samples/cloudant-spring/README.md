@@ -17,8 +17,8 @@ spring.cloud.connectors-sample: couchdb://user:password50@localhost:5984
 ```
 
 You can change the `spring.cloud.connectors-sample` property to point to your own Cloudant account or local Couch DB server.
-Normally CouchDB/Cloudant URLs use the HTTP protocol, however the Bluemix Cloud Connectors project uses the protocal (in this case couchdb) to identify the connector to use for the service.  Essentially you
-can take your CouchDB/Cloudant URL and replace the http protooal with couchdb and set that as the value
+Normally CouchDB/Cloudant URLs use the HTTP protocol, however the Bluemix Cloud Connectors project uses the protocol (in this case couchdb) to identify the connector to use for the service.  Essentially you
+can take your CouchDB/Cloudant URL and replace the http protocol with couchdb and set that as the value
 of `spring.cloud.connectors-sample`.
 
 ## Running With Maven
