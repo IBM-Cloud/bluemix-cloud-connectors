@@ -19,29 +19,33 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties({"id", "revision"})
 public class Status {
-  @JsonProperty("_id")
-  private String id;
-  @JsonProperty("_rev")
-  private String revision;
-  private String msg;
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-  public String getMsg() {
-    return msg;
-  }
-  public void setMsg(String msg) {
-    this.msg = msg;
-  }
-  public String getRevision() {
-    return revision;
-  }
-}
 
+    @JsonProperty("_id")
+    private String id;
+    @JsonProperty("_rev")
+    private String revision;
+    private String msg;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getRevision() {
+        return revision;
+    }
+}

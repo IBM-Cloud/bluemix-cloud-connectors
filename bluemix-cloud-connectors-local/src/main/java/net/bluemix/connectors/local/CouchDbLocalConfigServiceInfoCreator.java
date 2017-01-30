@@ -25,29 +25,29 @@ import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 
 /**
  * Local configuration for Cloudant/CouchDB.
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class CouchDbLocalConfigServiceInfoCreator extends LocalConfigServiceInfoCreator<CloudantServiceInfo> {
-  
-  private static final Logger LOG = Logger.getLogger(CouchDbLocalConfigServiceInfoCreator.class.getName());
 
-  /**
-   * Constructor.
-   */
-  public CouchDbLocalConfigServiceInfoCreator() {
-    super(CloudantServiceInfo.CLOUDANT_SCHEME);
-  }
+    private static final Logger LOG = Logger.getLogger(CouchDbLocalConfigServiceInfoCreator.class.getName());
 
-  @Override
-  public CloudantServiceInfo createServiceInfo(String id, String uri) {
-    try {
-      return new CloudantServiceInfo(id, uri);
-    } catch (URISyntaxException e) {
-      LOG.logp(Level.WARNING, CouchDbLocalConfigServiceInfoCreator.class.getName(), 
-              "createServiceInfo", "Invalid URI: " + uri, e);
-      return null;
+    /**
+     * Constructor.
+     */
+    public CouchDbLocalConfigServiceInfoCreator() {
+        super(CloudantServiceInfo.SCHEME);
     }
-  }
-}
 
+    @Override
+    public CloudantServiceInfo createServiceInfo(final String id, final String uri) {
+        try {
+            return new CloudantServiceInfo(id, uri);
+        } catch (URISyntaxException e) {
+            LOG.logp(Level.WARNING, CouchDbLocalConfigServiceInfoCreator.class.getName(),
+                    "createServiceInfo", "Invalid URI: " + uri, e);
+            return null;
+        }
+    }
+}

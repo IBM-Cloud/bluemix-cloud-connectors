@@ -24,51 +24,49 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class IBMGraphDbServiceInfoTest {
-  
-  private IBMGraphDbServiceInfo serviceInfo;
-  private IBMGraphDbServiceInfo urlServiceInfo;
 
-  @Before
-  public void setUp() throws Exception {
-    this.serviceInfo = new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password");
-    this.urlServiceInfo = new IBMGraphDbServiceInfo("testId", "ibmgraphdb://user:password@graphdb.com");
-  }
+    private IBMGraphDbServiceInfo serviceInfo;
+    private IBMGraphDbServiceInfo urlServiceInfo;
 
-  @After
-  public void tearDown() throws Exception {
-    this.serviceInfo = null;
-    this.urlServiceInfo = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.serviceInfo = new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password");
+        this.urlServiceInfo = new IBMGraphDbServiceInfo("testId", "ibmgraphdb://user:password@graphdb.com");
+    }
 
-  @Test
-  public void testGetApiUrl() {
-    assertEquals("https://graphdb.com", serviceInfo.getApiUrl());
-    assertEquals("https://graphdb.com", urlServiceInfo.getApiUrl());
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.serviceInfo = null;
+        this.urlServiceInfo = null;
+    }
 
-  @Test
-  public void testGetUsername() {
-    assertEquals("user", serviceInfo.getUsername());
-    assertEquals("user", urlServiceInfo.getUsername());
-  }
+    @Test
+    public void testGetApiUrl() {
+        assertEquals("https://graphdb.com", serviceInfo.getApiUrl());
+        assertEquals("https://graphdb.com", urlServiceInfo.getApiUrl());
+    }
 
-  @Test
-  public void testGetPassword() {
-    assertEquals("password", serviceInfo.getPassword());
-    assertEquals("password", urlServiceInfo.getPassword());
-  }
+    @Test
+    public void testGetUsername() {
+        assertEquals("user", serviceInfo.getUsername());
+        assertEquals("user", urlServiceInfo.getUsername());
+    }
 
-  @Test
-  public void testEqualsObject() {
-    assertFalse(serviceInfo.equals(null));
-    assertFalse(serviceInfo.equals("test"));
-    assertFalse(serviceInfo.equals(new IBMGraphDbServiceInfo("test", "https://graphdb.com", "user", "password")));
-    assertTrue(serviceInfo.equals(new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password")));
-    assertTrue(serviceInfo.equals(serviceInfo));
-    assertFalse(urlServiceInfo.equals(new IBMGraphDbServiceInfo("test", "https://graphdb.com", "user", "password")));
-    assertTrue(urlServiceInfo.equals(new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password")));
-    assertTrue(urlServiceInfo.equals(serviceInfo));
-  }
+    @Test
+    public void testGetPassword() {
+        assertEquals("password", serviceInfo.getPassword());
+        assertEquals("password", urlServiceInfo.getPassword());
+    }
+
+    @Test
+    public void testEqualsObject() {
+        assertFalse(serviceInfo.equals("test"));
+        assertFalse(serviceInfo.equals(new IBMGraphDbServiceInfo("test", "https://graphdb.com", "user", "password")));
+        assertTrue(serviceInfo.equals(new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password")));
+        assertTrue(serviceInfo.equals(serviceInfo));
+        assertFalse(urlServiceInfo.equals(new IBMGraphDbServiceInfo("test", "https://graphdb.com", "user", "password")));
+        assertTrue(urlServiceInfo.equals(new IBMGraphDbServiceInfo("testId", "https://graphdb.com", "user", "password")));
+        assertTrue(urlServiceInfo.equals(serviceInfo));
+    }
 
 }
-

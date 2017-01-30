@@ -13,28 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.bluemix</groupId>
-    <artifactId>bluemix-cloud-connectors</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>net.bluemix</groupId>
+        <artifactId>bluemix-cloud-connectors</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
   
-  <!-- ====================================================================== -->
-  <!-- D E P E N D E N C I E S -->
-  <!-- ====================================================================== -->
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-      <version>${spring.cloud.connectors.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>net.bluemix</groupId>
-      <artifactId>bluemix-cloud-connectors-core</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
+    <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
+  
+    <!-- ====================================================================== -->
+    <!-- D E P E N D E N C I E S -->
+    <!-- ====================================================================== -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+            <version>${spring.cloud.connectors.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bluemix-cloud-connectors-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    
 </project>

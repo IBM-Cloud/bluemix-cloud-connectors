@@ -23,50 +23,57 @@ import org.springframework.cloud.cloudfoundry.CloudFoundryServiceInfoCreator;
 import org.springframework.cloud.cloudfoundry.Tags;
 
 /**
- * Creates new TwilioServieInfo when Twilio is bound as a service to the application.
- * @author ryanjbaxter
+ * Creates new TwilioServieInfo when Twilio is bound as a service to the
+ * application.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class TwilioServiceInfoCreator extends CloudFoundryServiceInfoCreator<TwilioServiceInfo> {
-  
-  private static final String TWILIO_API_URI = "https://api.twilio.com";
-  
-  /**
-   * Constructor.
-   */
-  public TwilioServiceInfoCreator() {
-    super(new Tags(), "https");
-  }
 
-  @Override
-  public boolean accept(Map<String, Object> serviceData) {
-    Object credObject = serviceData.get("credentials");
-    if(credObject instanceof Map<?, ?>) {
-      Map<String, Object> credentials = (Map<String, Object>)credObject;
-      Object urlObj = credentials.get("url");
-      if(urlObj instanceof String) {
-        return TWILIO_API_URI.equals((String)urlObj);
-      }
-    }
-    return false;
-  }
+    private static final String TWILIO_API_URI = "https://api.twilio.com";
 
-  @Override
-  public TwilioServiceInfo createServiceInfo(Map<String, Object> serviceData) {
-    String accountId = null;
-    String authToken = null;
-    String id = null;
-    Object credObject = serviceData.get("credentials");
-    Object idObj = serviceData.get("name");
-    if(idObj instanceof String) { id = (String)idObj; }
-    if(credObject instanceof Map<?, ?>) {
-      Map<String, Object> credentials = (Map<String, Object>)credObject;
-      Object accoutIdObj = credentials.get("accountSID");
-      Object authTokenObj = credentials.get("authToken");
-      if(accoutIdObj instanceof String) { accountId = (String)accoutIdObj; }
-      if(authTokenObj instanceof String) { authToken = (String)authTokenObj; }
+    /**
+     * Constructor.
+     */
+    public TwilioServiceInfoCreator() {
+        super(new Tags(), "https");
     }
-    return new TwilioServiceInfo(id, accountId, authToken);
-  }
+
+    @Override
+    public boolean accept(Map<String, Object> serviceData) {
+        Object credObject = serviceData.get("credentials");
+        if (credObject instanceof Map<?, ?>) {
+            Map<String, Object> credentials = (Map<String, Object>) credObject;
+            Object urlObj = credentials.get("url");
+            if (urlObj instanceof String) {
+                return TWILIO_API_URI.equals((String) urlObj);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public TwilioServiceInfo createServiceInfo(Map<String, Object> serviceData) {
+        String accountId = null;
+        String authToken = null;
+        String id = null;
+        Object credObject = serviceData.get("credentials");
+        Object idObj = serviceData.get("name");
+        if (idObj instanceof String) {
+            id = (String) idObj;
+        }
+        if (credObject instanceof Map<?, ?>) {
+            Map<String, Object> credentials = (Map<String, Object>) credObject;
+            Object accoutIdObj = credentials.get("accountSID");
+            Object authTokenObj = credentials.get("authToken");
+            if (accoutIdObj instanceof String) {
+                accountId = (String) accoutIdObj;
+            }
+            if (authTokenObj instanceof String) {
+                authToken = (String) authTokenObj;
+            }
+        }
+        return new TwilioServiceInfo(id, accountId, authToken);
+    }
 }
-

@@ -24,44 +24,43 @@ import org.junit.Test;
 import net.bluemix.connectors.core.info.IBMObjectStorageServiceInfo;
 
 public class IBMObjectStorageLocalConfigServiceInfoCreatorTest {
-  
-  private IBMObjectStorageLocalConfigServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    creator = new IBMObjectStorageLocalConfigServiceInfoCreator();
-  }
+    private IBMObjectStorageLocalConfigServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        creator = new IBMObjectStorageLocalConfigServiceInfoCreator();
+    }
 
-  @Test
-  public void testCreateServiceInfoStringString() {
-    IBMObjectStorageServiceInfo info = creator.createServiceInfo("id", "swiftobjectstorage://userId:password@identity.open.softlayer.com/project/domainName");
-    assertEquals("https://identity.open.softlayer.com", info.getAuthUrl());
-    assertEquals("userId", info.getUserId());
-    assertEquals("password", info.getPassword());
-    assertEquals("project", info.getProject());
-    assertEquals("domainName", info.getDomainName());
-    assertEquals("id",info.getId());
-    assertNull(info.getDomainId());
-    assertNull(info.getProjectId());
-    assertNull(info.getRegion());
-    assertNull(info.getUsername());
-    info = creator.createServiceInfo("id", "swiftobjectstorage://identity.open.softlayer.com");
-    assertEquals("https://identity.open.softlayer.com", info.getAuthUrl());
-    assertNull(info.getUserId());
-    assertNull(info.getPassword());
-    assertNull(info.getProject());
-    assertNull(info.getDomainName());
-    assertEquals("id",info.getId());
-    assertNull(info.getDomainId());
-    assertNull(info.getProjectId());
-    assertNull(info.getRegion());
-    assertNull(info.getUsername());
-  }
+    @After
+    public void tearDown() throws Exception {
+        creator = null;
+    }
+
+    @Test
+    public void testCreateServiceInfoStringString() {
+        IBMObjectStorageServiceInfo info = creator.createServiceInfo("id", "swiftobjectstorage://userId:password@identity.open.softlayer.com/project/domainName");
+        assertEquals("https://identity.open.softlayer.com", info.getAuthUrl());
+        assertEquals("userId", info.getUserId());
+        assertEquals("password", info.getPassword());
+        assertEquals("project", info.getProject());
+        assertEquals("domainName", info.getDomainName());
+        assertEquals("id", info.getId());
+        assertNull(info.getDomainId());
+        assertNull(info.getProjectId());
+        assertNull(info.getRegion());
+        assertNull(info.getUsername());
+        info = creator.createServiceInfo("id", "swiftobjectstorage://identity.open.softlayer.com");
+        assertEquals("https://identity.open.softlayer.com", info.getAuthUrl());
+        assertNull(info.getUserId());
+        assertNull(info.getPassword());
+        assertNull(info.getProject());
+        assertNull(info.getDomainName());
+        assertEquals("id", info.getId());
+        assertNull(info.getDomainId());
+        assertNull(info.getProjectId());
+        assertNull(info.getRegion());
+        assertNull(info.getUsername());
+    }
 
 }
-

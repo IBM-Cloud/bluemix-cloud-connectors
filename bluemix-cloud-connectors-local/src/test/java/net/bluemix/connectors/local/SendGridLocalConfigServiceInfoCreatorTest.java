@@ -24,32 +24,31 @@ import org.junit.Test;
 import org.springframework.cloud.service.common.SmtpServiceInfo;
 
 public class SendGridLocalConfigServiceInfoCreatorTest {
-  
-  private SendGridLocalConfigServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new SendGridLocalConfigServiceInfoCreator();
-  }
+    private SendGridLocalConfigServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new SendGridLocalConfigServiceInfoCreator();
+    }
 
-  @Test
-  public void testCreateServiceInfo() {
-    SmtpServiceInfo info = creator.createServiceInfo("sendgrid", "smtp://user:password@mymail.com");
-    assertEquals("mymail.com", info.getHost());
-    assertEquals("sendgrid", info.getId());
-    assertEquals("password", info.getPassword());
-    assertEquals("user", info.getUserName());
-    assertEquals(-1, info.getPort());
-    assertNull(info.getPath());
-    assertNull(info.getQuery());
-    assertEquals("smtp", info.getScheme());
-    assertEquals("smtp://user:password@mymail.com", info.getUri());
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testCreateServiceInfo() {
+        SmtpServiceInfo info = creator.createServiceInfo("sendgrid", "smtp://user:password@mymail.com");
+        assertEquals("mymail.com", info.getHost());
+        assertEquals("sendgrid", info.getId());
+        assertEquals("password", info.getPassword());
+        assertEquals("user", info.getUserName());
+        assertEquals(-1, info.getPort());
+        assertNull(info.getPath());
+        assertNull(info.getQuery());
+        assertEquals("smtp", info.getScheme());
+        assertEquals("smtp://user:password@mymail.com", info.getUri());
+    }
 
 }
-

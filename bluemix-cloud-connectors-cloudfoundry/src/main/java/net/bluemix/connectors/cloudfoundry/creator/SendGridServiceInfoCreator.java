@@ -19,20 +19,18 @@ import java.util.Map;
 
 import org.springframework.cloud.cloudfoundry.SmtpServiceInfoCreator;
 
-
-
 /**
- * Service info creator for SendGrid.
- * In Bluemix SendGrid does not have the URI so we need to change the default
- * SmtpServiceInfoCreator accept method.
- * @author ryanjbaxter
+ * Service info creator for SendGrid. In Bluemix SendGrid does not have the URI
+ * so we need to change the default SmtpServiceInfoCreator accept method.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class SendGridServiceInfoCreator extends SmtpServiceInfoCreator {
-  @Override
-  public boolean accept(Map<String, Object> serviceData) {
-    String label = (String)serviceData.get("label");
-    return "sendgrid".equalsIgnoreCase(label);
-  }
-}
 
+    @Override
+    public boolean accept(Map<String, Object> serviceData) {
+        String label = (String) serviceData.get("label");
+        return "sendgrid".equalsIgnoreCase(label);
+    }
+}

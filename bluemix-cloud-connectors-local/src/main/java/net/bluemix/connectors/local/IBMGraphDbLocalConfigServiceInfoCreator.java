@@ -25,29 +25,29 @@ import net.bluemix.connectors.core.info.IBMGraphDbServiceInfo;
 
 /**
  * Creates {@link IBMGraphDbServiceInfo} based on a local configuration.
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
-public class IBMGraphDbLocalConfigServiceInfoCreator extends LocalConfigServiceInfoCreator<IBMGraphDbServiceInfo>{
-  
-  private static final Logger LOG = Logger.getLogger(IBMGraphDbLocalConfigServiceInfoCreator.class.getName());
-  
-  /**
-   * Constructor.
-   */
-  public IBMGraphDbLocalConfigServiceInfoCreator() {
-    super(IBMGraphDbServiceInfo.GRAPH_DB_SCHEME);
-  }
+public class IBMGraphDbLocalConfigServiceInfoCreator extends LocalConfigServiceInfoCreator<IBMGraphDbServiceInfo> {
 
-  @Override
-  public IBMGraphDbServiceInfo createServiceInfo(String id, String uri) {
-    try {
-      return new IBMGraphDbServiceInfo(id, uri);
-    } catch (URISyntaxException e) {
-      LOG.logp(Level.WARNING, IBMGraphDbLocalConfigServiceInfoCreator.class.getName(), 
-              "createServiceInfo", "Invalid URI: " + uri, e);
-      return null;
+    private static final Logger LOG = Logger.getLogger(IBMGraphDbLocalConfigServiceInfoCreator.class.getName());
+
+    /**
+     * Constructor.
+     */
+    public IBMGraphDbLocalConfigServiceInfoCreator() {
+        super(IBMGraphDbServiceInfo.SCHEME);
     }
-  }
-}
 
+    @Override
+    public IBMGraphDbServiceInfo createServiceInfo(String id, String uri) {
+        try {
+            return new IBMGraphDbServiceInfo(id, uri);
+        } catch (URISyntaxException e) {
+            LOG.logp(Level.WARNING, IBMGraphDbLocalConfigServiceInfoCreator.class.getName(),
+                    "createServiceInfo", "Invalid URI: " + uri, e);
+            return null;
+        }
+    }
+}

@@ -15,6 +15,6 @@
  */
 var services = angular.module('cloudantApp.services', ['ngResource']);
 
-services.factory('StatusService', function($resource) {
-  return $resource('api/status/:id', {id : "@id"});
+services.factory('StatusService', function ($resource) {
+    return $resource('api/status/:id', {id: "@id"});
 });

@@ -23,28 +23,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CouchDbLocalConfigServiceInfoCreatorTest {
-  
-  private CouchDbLocalConfigServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    creator = new CouchDbLocalConfigServiceInfoCreator();
-  }
+    private CouchDbLocalConfigServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        creator = new CouchDbLocalConfigServiceInfoCreator();
+    }
 
-  @Test
-  public void testCreateServiceInfoStringString() {
-    CloudantServiceInfo info = creator.createServiceInfo("cloudant", "couchdb://user:password@user.cloudant.com");
-    assertEquals(new CloudantServiceInfo("cloudant", "user", "password", "user.cloudant.com", -1, "http://user:password@user.cloudant.com"), info);
-    info = creator.createServiceInfo("cloudant", "couchdb://localhost:5984");
-    assertEquals(new CloudantServiceInfo("cloudant", null, null, "localhost", 5984, "http://localhost:5984"), info);
-    info = creator.createServiceInfo("cloudant", "couchdb://couchdb:1234");
-    assertEquals(new CloudantServiceInfo("cloudant", null, null, "couchdb", 1234, "http://couchdb:1234"), info);
-  }
+    @After
+    public void tearDown() throws Exception {
+        creator = null;
+    }
+
+    @Test
+    public void testCreateServiceInfoStringString() {
+        CloudantServiceInfo info = creator.createServiceInfo("cloudant", "couchdb://user:password@user.cloudant.com");
+        assertEquals(new CloudantServiceInfo("cloudant", "user", "password", "user.cloudant.com", -1, "http://user:password@user.cloudant.com"), info);
+        info = creator.createServiceInfo("cloudant", "couchdb://localhost:5984");
+        assertEquals(new CloudantServiceInfo("cloudant", null, null, "localhost", 5984, "http://localhost:5984"), info);
+        info = creator.createServiceInfo("cloudant", "couchdb://couchdb:1234");
+        assertEquals(new CloudantServiceInfo("cloudant", null, null, "couchdb", 1234, "http://couchdb:1234"), info);
+    }
 
 }
-

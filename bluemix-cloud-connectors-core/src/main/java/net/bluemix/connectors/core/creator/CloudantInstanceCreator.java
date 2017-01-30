@@ -30,26 +30,27 @@ import org.springframework.cloud.service.ServiceConnectorConfig;
 
 /**
  * Handles creating a CouchDBInstance from the CloudantServiceInfo object.
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
+ * @author Hans W. Uhlig <hans.uhlig@ibm.com>
  *
  */
-public class CouchDbInstanceCreator extends AbstractServiceConnectorCreator<CouchDbInstance, CloudantServiceInfo> {
-  
-  private static final Logger LOG = Logger.getLogger(CouchDbInstanceCreator.class.getName());
+public class CloudantInstanceCreator extends AbstractServiceConnectorCreator<CouchDbInstance, CloudantServiceInfo> {
 
-  @Override
-  public CouchDbInstance create(CloudantServiceInfo serviceInfo,
-          ServiceConnectorConfig serviceConnectorConfig) {
-    HttpClient httpClient;
-    try {
-      httpClient = new StdHttpClient.Builder()
-      .url(serviceInfo.getUrl())
-      .build();
-      return new StdCouchDbInstance(httpClient);
-    } catch (MalformedURLException e) {
-      LOG.logp(Level.WARNING, CouchDbInstanceCreator.class.getName(), "create", "Error parsing URL", e);
-      return null;
+    private static final Logger LOG = Logger.getLogger(CloudantInstanceCreator.class.getName());
+
+    @Override
+    public CouchDbInstance create(CloudantServiceInfo serviceInfo,
+            ServiceConnectorConfig serviceConnectorConfig) {
+        HttpClient httpClient;
+        try {
+            httpClient = new StdHttpClient.Builder()
+                    .url(serviceInfo.getUrl())
+                    .build();
+            return new StdCouchDbInstance(httpClient);
+        } catch (MalformedURLException e) {
+            LOG.logp(Level.WARNING, CloudantInstanceCreator.class.getName(), "create", "Error parsing URL", e);
+            return null;
+        }
     }
-  }
 }
-

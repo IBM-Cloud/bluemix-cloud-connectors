@@ -24,57 +24,69 @@ import org.springframework.cloud.cloudfoundry.Tags;
 
 /**
  * Creates a new {@link CloudantServiceInfo}.
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class CloudantServiceInfoCreator extends CloudFoundryServiceInfoCreator<CloudantServiceInfo> {
 
-  /**
-   * Constructor.
-   */
-  public CloudantServiceInfoCreator() {
-    super(new Tags(), CloudantServiceInfo.CLOUDANT_SCHEME);
-  }
-  
-  @Override
-  public boolean accept(Map<String, Object> serviceData) {
-    boolean result = false;
-    // Don't really like using the label as the determining factor but that is the only
-    // unique attribute to identify the service with.
-    Object obj = serviceData.get("label");
-    if(obj instanceof String) {
-      String label = (String)obj;
-      result = "cloudantNoSQLDB".equals(label);
+    /**
+     * Constructor.
+     */
+    public CloudantServiceInfoCreator() {
+        super(new Tags(), CloudantServiceInfo.SCHEME);
     }
-    return result;
-  }
 
-  @Override
-  public CloudantServiceInfo createServiceInfo(Map<String, Object> serviceData) {
-    String id = null;
-    String username = null;
-    String password = null;
-    String host = null;
-    int port = 0;
-    String url = null;
-    Object credObject = serviceData.get("credentials");
-    Object idObj = serviceData.get("name");
-    if(idObj instanceof String) { id = (String)idObj; }
-    if(credObject instanceof Map<?, ?>) {
-      Map<String, Object> credentials = (Map<String, Object>)credObject;
-      Object usernameObj = credentials.get("username");
-      Object passwordObj = credentials.get("password");
-      Object hostObj = credentials.get("host");
-      Object portObj = credentials.get("port");
-      Object urlObj = credentials.get("url");
-      if(usernameObj instanceof String) { username = (String)usernameObj; }
-      if(passwordObj instanceof String) { password = (String)passwordObj; }
-      if(hostObj instanceof String) { host = (String)hostObj; }
-      if(portObj instanceof Integer) { port = (Integer)portObj; }
-      if(urlObj instanceof String) { url = (String)urlObj; }
+    @Override
+    public boolean accept(final Map<String, Object> serviceData) {
+        boolean result = false;
+        // Don't really like using the label as the determining factor but that is the only
+        // unique attribute to identify the service with.
+        Object obj = serviceData.get("label");
+        if (obj instanceof String) {
+            String label = (String) obj;
+            result = "cloudantNoSQLDB".equals(label);
+        }
+        return result;
     }
-    return new CloudantServiceInfo(id, username, password, host, port, url);
-  }
+
+    @Override
+    public CloudantServiceInfo createServiceInfo(final Map<String, Object> serviceData) {
+        String id = null;
+        String username = null;
+        String password = null;
+        String host = null;
+        int port = 0;
+        String url = null;
+        Object credObject = serviceData.get("credentials");
+        Object idObj = serviceData.get("name");
+        if (idObj instanceof String) {
+            id = (String) idObj;
+        }
+        if (credObject instanceof Map<?, ?>) {
+            final Map<String, Object> credentials = (Map<String, Object>) credObject;
+            final Object usernameObj = credentials.get("username");
+            final Object passwordObj = credentials.get("password");
+            final Object hostObj = credentials.get("host");
+            final Object portObj = credentials.get("port");
+            final Object urlObj = credentials.get("url");
+            if (usernameObj instanceof String) {
+                username = (String) usernameObj;
+            }
+            if (passwordObj instanceof String) {
+                password = (String) passwordObj;
+            }
+            if (hostObj instanceof String) {
+                host = (String) hostObj;
+            }
+            if (portObj instanceof Integer) {
+                port = (Integer) portObj;
+            }
+            if (urlObj instanceof String) {
+                url = (String) urlObj;
+            }
+        }
+        return new CloudantServiceInfo(id, username, password, host, port, url);
+    }
 
 }
-

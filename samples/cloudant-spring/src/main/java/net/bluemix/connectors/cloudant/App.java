@@ -32,24 +32,24 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 public class App implements EmbeddedServletContainerCustomizer {
 
-  public static void main(String[] args) throws Exception {
-      SpringApplication.run(App.class, args);
-  }
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(App.class, args);
+    }
 
-  @Override
-  public void customize(ConfigurableEmbeddedServletContainer container) {
-    //Enabled UTF-8 as the default character encoding for static HTML resources.
-    //If you would like to disable this comment out the 3 lines below or change
-    //the encoding to whatever you would like.
-    MimeMappings mappings = new MimeMappings(MimeMappings.DEFAULT);
-    mappings.add("html", "text/html;charset=utf-8");
-    container.setMimeMappings(mappings );
-  }
-  
-  @Bean
-  public CouchDbConnector couchDbConnector(CouchDbInstance couchDbInstance) {
-    CouchDbConnector connector = new StdCouchDbConnector("status", couchDbInstance);
-    connector.createDatabaseIfNotExists();
-    return connector;
-  }
+    @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        //Enabled UTF-8 as the default character encoding for static HTML resources.
+        //If you would like to disable this comment out the 3 lines below or change
+        //the encoding to whatever you would like.
+        MimeMappings mappings = new MimeMappings(MimeMappings.DEFAULT);
+        mappings.add("html", "text/html;charset=utf-8");
+        container.setMimeMappings(mappings);
+    }
+
+    @Bean
+    public CouchDbConnector couchDbConnector(CouchDbInstance couchDbInstance) {
+        CouchDbConnector connector = new StdCouchDbConnector("status", couchDbInstance);
+        connector.createDatabaseIfNotExists();
+        return connector;
+    }
 }

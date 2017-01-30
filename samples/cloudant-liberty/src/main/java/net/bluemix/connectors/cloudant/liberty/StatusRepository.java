@@ -19,11 +19,10 @@ import org.ektorp.CouchDbConnector;
 import org.ektorp.support.CouchDbRepositorySupport;
 
 public class StatusRepository extends CouchDbRepositorySupport<Status> {
-  
-  public StatusRepository(CouchDbConnector connector) {
-    super(Status.class, connector);
-    initStandardDesignDocument();
-  }
+
+    public StatusRepository(CouchDbConnector connector) {
+        super(Status.class, connector);
+        initStandardDesignDocument();
+    }
 
 }
-

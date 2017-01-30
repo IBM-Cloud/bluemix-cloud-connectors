@@ -24,53 +24,52 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CloudantServiceInfoTest {
-  
-  private CloudantServiceInfo serviceInfo;
 
-  @Before
-  public void setUp() throws Exception {
-    serviceInfo = new CloudantServiceInfo("testId", "username", "password", "username.cloudant.com", 443, 
-            "https://username:password@username.cloudant.com");
-  }
+    private CloudantServiceInfo serviceInfo;
 
-  @After
-  public void tearDown() throws Exception {
-    serviceInfo = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        serviceInfo = new CloudantServiceInfo("testId", "username", "password", "username.cloudant.com", 443,
+                "https://username:password@username.cloudant.com");
+    }
 
-  @Test
-  public void testGetUsername() {
-    assertEquals("username", serviceInfo.getUsername());
-  }
+    @After
+    public void tearDown() throws Exception {
+        serviceInfo = null;
+    }
 
-  @Test
-  public void testGetPassword() {
-    assertEquals("password", serviceInfo.getPassword());
-  }
+    @Test
+    public void testGetUsername() {
+        assertEquals("username", serviceInfo.getUsername());
+    }
 
-  @Test
-  public void testGetHost() {
-    assertEquals("username.cloudant.com", serviceInfo.getHost());
-  }
+    @Test
+    public void testGetPassword() {
+        assertEquals("password", serviceInfo.getPassword());
+    }
 
-  @Test
-  public void testGetPort() {
-    assertEquals(443, serviceInfo.getPort());
-  }
+    @Test
+    public void testGetHost() {
+        assertEquals("username.cloudant.com", serviceInfo.getHost());
+    }
 
-  @Test
-  public void testGetUrl() {
-    assertEquals("https://username:password@username.cloudant.com", serviceInfo.getUrl());
-  }
-  
-  @Test
-  public void testEquals() {
-    assertFalse(serviceInfo.equals(null));
-    assertFalse(serviceInfo.equals("test"));
-    assertFalse(serviceInfo.equals(new CloudantServiceInfo(null, null, null, null, 0, null)));
-    assertTrue(serviceInfo.equals(new CloudantServiceInfo("testId", "username", "password", "username.cloudant.com", 443, 
-            "https://username:password@username.cloudant.com")));
-  }
+    @Test
+    public void testGetPort() {
+        assertEquals(443, serviceInfo.getPort());
+    }
+
+    @Test
+    public void testGetUrl() {
+        assertEquals("https://username:password@username.cloudant.com", serviceInfo.getUrl());
+    }
+
+    @Test
+    public void testEquals() {
+        assertFalse(serviceInfo.equals(null));
+        assertFalse(serviceInfo.equals("test"));
+        assertFalse(serviceInfo.equals(new CloudantServiceInfo(null, null, null, null, 0, null)));
+        assertTrue(serviceInfo.equals(new CloudantServiceInfo("testId", "username", "password", "username.cloudant.com", 443,
+                "https://username:password@username.cloudant.com")));
+    }
 
 }
-

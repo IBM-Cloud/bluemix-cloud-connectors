@@ -30,42 +30,40 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/status")
 public class StatusController {
-  
-  @Inject
-  private StatusRepository repo;
 
-  
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public List<Status> getAll() {
-    return repo.getAll();
-  }
-  
-  @POST
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
-  public Status create(Status status) {
-    repo.add(status);
-    return status;
-  }
-  
-  @DELETE
-  @Path("{id}")
-  public void delete(@PathParam("id") String id) {
-    Status status = repo.get(id);
-    repo.remove(status);
-  }
-  
-  @PUT
-  @Path("{id}")
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
-  public Status udpate(@PathParam("id") String id, Status status) {
-    Status update = repo.get(id);
-    update.setMsg(status.getMsg());;
-    repo.update(update);
-    return update;
-  }
+    @Inject
+    private StatusRepository repo;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Status> getAll() {
+        return repo.getAll();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Status create(Status status) {
+        repo.add(status);
+        return status;
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") String id) {
+        Status status = repo.get(id);
+        repo.remove(status);
+    }
+
+    @PUT
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Status udpate(@PathParam("id") String id, Status status) {
+        Status update = repo.get(id);
+        update.setMsg(status.getMsg());;
+        repo.update(update);
+        return update;
+    }
 
 }
-
