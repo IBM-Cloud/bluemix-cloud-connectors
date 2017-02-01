@@ -24,56 +24,61 @@ import net.bluemix.connectors.core.info.IBMGraphDbServiceInfo;
 
 /**
  * Creates a new {@link IBMGraphDbServiceInfo}
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class IBMGraphDbServiceInfoCreator extends CloudFoundryServiceInfoCreator<IBMGraphDbServiceInfo> {
 
-  private static final String LABEL = "IBM Graph";
+    private static final String LABEL = "IBM Graph";
 
-  /**
-   * Constructor
-   */
-  public IBMGraphDbServiceInfoCreator() {
-    super(new Tags(), "");
-  }
-
-
-
-  @Override
-  public boolean accept(Map<String, Object> serviceData) {
-    boolean result = false;
-    // Don't really like using the label as the determining factor but that is the only
-    // unique attribute to identify the service with.
-    Object obj = serviceData.get("label");
-    if(obj instanceof String) {
-      String label = (String)obj;
-      result = LABEL.equals(label);
+    /**
+     * Constructor
+     */
+    public IBMGraphDbServiceInfoCreator() {
+        super(new Tags(), "");
     }
-    return result;
-  }
 
-
-
-  @Override
-  public IBMGraphDbServiceInfo createServiceInfo(Map<String, Object> serviceData) {
-    String id = null;
-    String username = null;
-    String password = null;
-    String apiUrl = null;
-    Object credObject = serviceData.get("credentials");
-    Object idObj = serviceData.get("name");
-    if(idObj instanceof String) { id = (String)idObj; }
-    if(credObject instanceof Map<?, ?>) {
-      Map<String, Object> credentials = (Map<String, Object>)credObject;
-      Object usernameObj = credentials.get("username");
-      Object passwordObj = credentials.get("password");
-      Object apiUrlObj = credentials.get("apiURL");
-      if(usernameObj instanceof String) { username = (String)usernameObj; }
-      if(passwordObj instanceof String) { password = (String)passwordObj; }
-      if(apiUrlObj instanceof String) { apiUrl = (String)apiUrlObj; }
+    @Override
+    public boolean accept(Map<String, Object> serviceData) {
+        boolean result = false;
+        // Don't really like using the label as the determining factor but that is the only
+        // unique attribute to identify the service with.
+        Object obj = serviceData.get("label");
+        if (obj instanceof String) {
+            String label = (String) obj;
+            result = LABEL.equals(label);
+        }
+        return result;
     }
-    return new IBMGraphDbServiceInfo(id, apiUrl, username, password);
-  }
+
+    @Override
+    public IBMGraphDbServiceInfo createServiceInfo(Map<String, Object> serviceData) {
+        String id = null;
+        String username = null;
+        String password = null;
+        String apiUrl = null;
+        Object credObject = serviceData.get("credentials");
+        Object idObj = serviceData.get("name");
+        if (idObj instanceof String) {
+            id = (String) idObj;
+        }
+        if (credObject instanceof Map<?, ?>) {
+            Map<String, Object> credentials = (Map<String, Object>) credObject;
+            Object usernameObj = credentials.get("username");
+            Object passwordObj = credentials.get("password");
+            Object apiUrlObj = credentials.get("apiURL");
+            if (usernameObj instanceof String) {
+                username = (String) usernameObj;
+            }
+            if (passwordObj instanceof String) {
+                password = (String) passwordObj;
+            }
+            if (apiUrlObj instanceof String) {
+                apiUrl = (String) apiUrlObj;
+            }
+        }
+        return new IBMGraphDbServiceInfo(id, apiUrl, username, password);
+    }
 
 }

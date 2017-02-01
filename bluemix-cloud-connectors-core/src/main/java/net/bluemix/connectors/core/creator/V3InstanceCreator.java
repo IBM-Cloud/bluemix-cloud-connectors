@@ -24,21 +24,22 @@ import org.springframework.cloud.service.ServiceConnectorConfig;
 import net.bluemix.connectors.core.info.IBMObjectStorageServiceInfo;
 
 /**
- * Class which creates a {@link org.openstack4j.api.client.IOSClientBuilder.V3} object using the service credentials
- * for the IBM Object Storage service.
- * @author ryanjbaxter
+ * Class which creates a {@link org.openstack4j.api.client.IOSClientBuilder.V3}
+ * object using the service credentials for the IBM Object Storage service.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class V3InstanceCreator extends AbstractServiceConnectorCreator<V3, IBMObjectStorageServiceInfo> {
 
-  @Override
-  public V3 create(IBMObjectStorageServiceInfo serviceInfo,
-          ServiceConnectorConfig serviceConnectorConfig) {
-    Identifier domainIdent = Identifier.byName(serviceInfo.getDomainName());
-    Identifier projectIdent = Identifier.byName(serviceInfo.getProject());
-    return OSFactory.builderV3().endpoint(serviceInfo.getAuthUrl()).
-            credentials(serviceInfo.getUserId(), serviceInfo.getPassword()).
-            scopeToProject(projectIdent, domainIdent);
-  }
-}
+    @Override
+    public V3 create(IBMObjectStorageServiceInfo serviceInfo,
+            ServiceConnectorConfig serviceConnectorConfig) {
+        final Identifier domainIdent = Identifier.byName(serviceInfo.getDomainName());
+        final Identifier projectIdent = Identifier.byName(serviceInfo.getProject());
+        return OSFactory.builderV3().endpoint(serviceInfo.getAuthUrl())
+                .credentials(serviceInfo.getUserId(), serviceInfo.getPassword())
+                .scopeToProject(projectIdent, domainIdent);
+    }
 
+}

@@ -29,52 +29,51 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TwilioServiceInfoCreatorTest {
-  
-  private TwilioServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new TwilioServiceInfoCreator();
-  }
+    private TwilioServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new TwilioServiceInfoCreator();
+    }
 
-  @Test
-  public void testAcceptMapOfStringObject() {
-    Map<String, Object> serviceData = new HashMap<String, Object>();
-    Map<String, String> credData = new HashMap<String, String>();
-    credData.put("url", "http://api.twilio.com");
-    serviceData.put("credentials", credData);
-    assertFalse(creator.accept(serviceData));
-    credData.put("url", "https://api.twilio.com");
-    assertTrue(creator.accept(serviceData));
-    credData.remove("url");
-    assertFalse(creator.accept(serviceData));
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
 
-  @Test
-  public void testCreateServiceInfo() {
-    Map<String, Object> empty = new HashMap<String, Object>();
-    Map<String, Object> badTypes = new HashMap<String, Object>();
-    badTypes.put("name", 1);
-    Map<String, Object> badCredTypes = new HashMap<String, Object>();
-    badCredTypes.put("accountSID", 1);
-    badCredTypes.put("authToken", 1);
-    badTypes.put("credentials", badCredTypes);
-    Map<String, Object> rawInfo = new HashMap<String, Object>();
-    rawInfo.put("name", "id");
-    Map<String, Object> rawInfoCreds = new HashMap<String, Object>();
-    rawInfoCreds.put("accountSID", "abc");
-    rawInfoCreds.put("authToken", "123");
-    rawInfo.put("credentials", rawInfoCreds);
-    TwilioServiceInfo nullServiceInfo = new TwilioServiceInfo(null, null, null);
-    TwilioServiceInfo serviceInfo = new TwilioServiceInfo("id", "abc", "123");
-    assertEquals(nullServiceInfo, creator.createServiceInfo(empty));
-    assertEquals(nullServiceInfo, creator.createServiceInfo(badTypes));
-    assertEquals(serviceInfo, creator.createServiceInfo(rawInfo));
-  }
+    @Test
+    public void testAcceptMapOfStringObject() {
+        Map<String, Object> serviceData = new HashMap<String, Object>();
+        Map<String, String> credData = new HashMap<String, String>();
+        credData.put("url", "http://api.twilio.com");
+        serviceData.put("credentials", credData);
+        assertFalse(creator.accept(serviceData));
+        credData.put("url", "https://api.twilio.com");
+        assertTrue(creator.accept(serviceData));
+        credData.remove("url");
+        assertFalse(creator.accept(serviceData));
+    }
+
+    @Test
+    public void testCreateServiceInfo() {
+        Map<String, Object> empty = new HashMap<String, Object>();
+        Map<String, Object> badTypes = new HashMap<String, Object>();
+        badTypes.put("name", 1);
+        Map<String, Object> badCredTypes = new HashMap<String, Object>();
+        badCredTypes.put("accountSID", 1);
+        badCredTypes.put("authToken", 1);
+        badTypes.put("credentials", badCredTypes);
+        Map<String, Object> rawInfo = new HashMap<String, Object>();
+        rawInfo.put("name", "id");
+        Map<String, Object> rawInfoCreds = new HashMap<String, Object>();
+        rawInfoCreds.put("accountSID", "abc");
+        rawInfoCreds.put("authToken", "123");
+        rawInfo.put("credentials", rawInfoCreds);
+        TwilioServiceInfo nullServiceInfo = new TwilioServiceInfo(null, null, null);
+        TwilioServiceInfo serviceInfo = new TwilioServiceInfo("id", "abc", "123");
+        assertEquals(nullServiceInfo, creator.createServiceInfo(empty));
+        assertEquals(nullServiceInfo, creator.createServiceInfo(badTypes));
+        assertEquals(serviceInfo, creator.createServiceInfo(rawInfo));
+    }
 }
-

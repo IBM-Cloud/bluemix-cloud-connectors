@@ -27,27 +27,26 @@ import org.junit.Test;
 
 public class SendGridServiceInfoCreatorTest {
 
-  private SendGridServiceInfoCreator creator;
-  
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new SendGridServiceInfoCreator();
-  }
+    private SendGridServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new SendGridServiceInfoCreator();
+    }
 
-  @Test
-  public void testAccept() {
-    Map<String, Object> data = new HashMap<String, Object>();
-    assertFalse(creator.accept(data));
-    data.put("label", "foo");
-    assertFalse(creator.accept(data));
-    data.put("label", "sendgrid");
-    assertTrue(creator.accept(data));
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testAccept() {
+        Map<String, Object> data = new HashMap<String, Object>();
+        assertFalse(creator.accept(data));
+        data.put("label", "foo");
+        assertFalse(creator.accept(data));
+        data.put("label", "sendgrid");
+        assertTrue(creator.accept(data));
+    }
 
 }
-

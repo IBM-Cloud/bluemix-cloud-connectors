@@ -22,100 +22,99 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class IBMObjectStorageServiceInfoTest {
-  
-  private IBMObjectStorageServiceInfo serviceInfo;
-  private IBMObjectStorageServiceInfo urlServiceInfo;
-  private IBMObjectStorageServiceInfo badServiceInfo;
-  
-  @Before
-  public void setUp() throws Exception {
-    serviceInfo = new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project", 
-            "projectId", "region", "userId", "username");
-    urlServiceInfo = new IBMObjectStorageServiceInfo("id", "swiftobjectstorage://userId:password@identity.open.softlayer.com/project/domainName");
-    badServiceInfo = new IBMObjectStorageServiceInfo("id", "swiftobjectstorage://identity.open.softlayer.com");
-  }
 
-  @After
-  public void tearDown() throws Exception {
-    this.serviceInfo = null;
-    this.urlServiceInfo = null;
-    this.badServiceInfo = null;
-  }
+    private IBMObjectStorageServiceInfo serviceInfo;
+    private IBMObjectStorageServiceInfo urlServiceInfo;
+    private IBMObjectStorageServiceInfo badServiceInfo;
 
-  @Test
-  public void testGetAuthUrl() {
-    assertEquals("authUrl", serviceInfo.getAuthUrl());
-    assertEquals("https://identity.open.softlayer.com", urlServiceInfo.getAuthUrl());
-    assertEquals("https://identity.open.softlayer.com", badServiceInfo.getAuthUrl());
-  }
+    @Before
+    public void setUp() throws Exception {
+        serviceInfo = new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project",
+                "projectId", "region", "userId", "username");
+        urlServiceInfo = new IBMObjectStorageServiceInfo("id", "swiftobjectstorage://userId:password@identity.open.softlayer.com/project/domainName");
+        badServiceInfo = new IBMObjectStorageServiceInfo("id", "swiftobjectstorage://identity.open.softlayer.com");
+    }
 
-  @Test
-  public void testGetDomainId() {
-    assertEquals("domainId", serviceInfo.getDomainId());
-    assertNull(urlServiceInfo.getDomainId());
-    assertNull(badServiceInfo.getDomainId());
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.serviceInfo = null;
+        this.urlServiceInfo = null;
+        this.badServiceInfo = null;
+    }
 
-  @Test
-  public void testGetDomainName() {
-    assertEquals("domainName", serviceInfo.getDomainName());
-    assertEquals("domainName", urlServiceInfo.getDomainName());
-    assertNull(badServiceInfo.getDomainName());
-  }
+    @Test
+    public void testGetAuthUrl() {
+        assertEquals("authUrl", serviceInfo.getAuthUrl());
+        assertEquals("https://identity.open.softlayer.com", urlServiceInfo.getAuthUrl());
+        assertEquals("https://identity.open.softlayer.com", badServiceInfo.getAuthUrl());
+    }
 
-  @Test
-  public void testGetProject() {
-    assertEquals("project", serviceInfo.getProject());
-    assertEquals("project", urlServiceInfo.getProject());
-    assertNull(badServiceInfo.getProject());
-  }
+    @Test
+    public void testGetDomainId() {
+        assertEquals("domainId", serviceInfo.getDomainId());
+        assertNull(urlServiceInfo.getDomainId());
+        assertNull(badServiceInfo.getDomainId());
+    }
 
-  @Test
-  public void testGetProjectId() {
-    assertEquals("projectId", serviceInfo.getProjectId());
-    assertNull(urlServiceInfo.getProjectId());
-    assertNull(badServiceInfo.getProjectId());
-  }
+    @Test
+    public void testGetDomainName() {
+        assertEquals("domainName", serviceInfo.getDomainName());
+        assertEquals("domainName", urlServiceInfo.getDomainName());
+        assertNull(badServiceInfo.getDomainName());
+    }
 
-  @Test
-  public void testGetRegion() {
-    assertEquals("region", serviceInfo.getRegion());
-    assertNull(urlServiceInfo.getRegion());
-    assertNull(badServiceInfo.getRegion());
-  }
+    @Test
+    public void testGetProject() {
+        assertEquals("project", serviceInfo.getProject());
+        assertEquals("project", urlServiceInfo.getProject());
+        assertNull(badServiceInfo.getProject());
+    }
 
-  @Test
-  public void testGetUserId() {
-    assertEquals("userId", serviceInfo.getUserId());
-    assertEquals("userId", urlServiceInfo.getUserId());
-    assertNull(badServiceInfo.getUserId());
-  }
+    @Test
+    public void testGetProjectId() {
+        assertEquals("projectId", serviceInfo.getProjectId());
+        assertNull(urlServiceInfo.getProjectId());
+        assertNull(badServiceInfo.getProjectId());
+    }
 
-  @Test
-  public void testGetUsername() {
-    assertEquals("username", serviceInfo.getUsername());
-    assertNull(urlServiceInfo.getUsername());
-    assertNull(badServiceInfo.getUsername());
-  }
-  
-  @Test
-  public void testGetPassword() {
-    assertEquals("password", serviceInfo.getPassword());
-    assertEquals("password", urlServiceInfo.getPassword());
-    assertNull(badServiceInfo.getPassword());
-  }
+    @Test
+    public void testGetRegion() {
+        assertEquals("region", serviceInfo.getRegion());
+        assertNull(urlServiceInfo.getRegion());
+        assertNull(badServiceInfo.getRegion());
+    }
 
-  @Test
-  public void testEqualsObject() {
-    assertTrue(new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project", 
-            "projectId", "region", "userId", "username").equals(serviceInfo));
-    assertTrue(new IBMObjectStorageServiceInfo("id", "https://identity.open.softlayer.com", null, "domainName", "password", "project", 
-            null, null, "userId", null).equals(urlServiceInfo));
-    assertFalse(serviceInfo.equals(null));
-    assertFalse(serviceInfo.equals("test"));
-    assertFalse(serviceInfo.equals(new IBMObjectStorageServiceInfo("id1", "authUrl", "domainId", "domainName", "password", "project", 
-            "projectId", "region", "userId", "username")));
-  }
+    @Test
+    public void testGetUserId() {
+        assertEquals("userId", serviceInfo.getUserId());
+        assertEquals("userId", urlServiceInfo.getUserId());
+        assertNull(badServiceInfo.getUserId());
+    }
+
+    @Test
+    public void testGetUsername() {
+        assertEquals("username", serviceInfo.getUsername());
+        assertNull(urlServiceInfo.getUsername());
+        assertNull(badServiceInfo.getUsername());
+    }
+
+    @Test
+    public void testGetPassword() {
+        assertEquals("password", serviceInfo.getPassword());
+        assertEquals("password", urlServiceInfo.getPassword());
+        assertNull(badServiceInfo.getPassword());
+    }
+
+    @Test
+    public void testEqualsObject() {
+        assertTrue(new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project",
+                "projectId", "region", "userId", "username").equals(serviceInfo));
+        assertTrue(new IBMObjectStorageServiceInfo("id", "https://identity.open.softlayer.com", null, "domainName", "password", "project",
+                null, null, "userId", null).equals(urlServiceInfo));
+        assertFalse(serviceInfo.equals(null));
+        assertFalse(serviceInfo.equals("test"));
+        assertFalse(serviceInfo.equals(new IBMObjectStorageServiceInfo("id1", "authUrl", "domainId", "domainName", "password", "project",
+                "projectId", "region", "userId", "username")));
+    }
 
 }
-

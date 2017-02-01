@@ -30,52 +30,52 @@ import net.bluemix.connectors.core.info.IBMGraphDbServiceInfo;
 
 public class IBMGraphDbServiceInfoCreatorTest {
 
-  private IBMGraphDbServiceInfoCreator creator;
+    private IBMGraphDbServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new IBMGraphDbServiceInfoCreator();
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new IBMGraphDbServiceInfoCreator();
+    }
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
 
-  @Test
-  public void testAcceptMapOfStringObject() {
-    Map<String, Object> emptyProps = new HashMap<String, Object>();
-    Map<String, Object> stringProps = new HashMap<String, Object>();
-    stringProps.put("label", "IBM Graph");
-    Map<String, Object> intProps = new HashMap<String, Object>();
-    intProps.put("label", 123);
-    assertFalse(creator.accept(emptyProps));
-    assertFalse(creator.accept(intProps));
-    assertTrue(creator.accept(stringProps));
-  }
+    @Test
+    public void testAcceptMapOfStringObject() {
+        Map<String, Object> emptyProps = new HashMap<String, Object>();
+        Map<String, Object> stringProps = new HashMap<String, Object>();
+        stringProps.put("label", "IBM Graph");
+        Map<String, Object> intProps = new HashMap<String, Object>();
+        intProps.put("label", 123);
+        assertFalse(creator.accept(emptyProps));
+        assertFalse(creator.accept(intProps));
+        assertTrue(creator.accept(stringProps));
+    }
 
-  @Test
-  public void testCreateServiceInfo() {
-    Map<String, Object> empty = new HashMap<String, Object>();
-    Map<String, Object> badTypes = new HashMap<String, Object>();
-    badTypes.put("name", 1);
-    Map<String, Object> badCredTypes = new HashMap<String, Object>();
-    badCredTypes.put("username", 1);
-    badCredTypes.put("password", 1);
-    badCredTypes.put("apiURL", 1);
-    badTypes.put("credentials", badCredTypes);
-    Map<String, Object> rawInfo = new HashMap<String, Object>();
-    rawInfo.put("name", "id");
-    Map<String, Object> rawInfoCreds = new HashMap<String, Object>();
-    rawInfoCreds.put("username", "username");
-    rawInfoCreds.put("password", "password");
-    rawInfoCreds.put("apiURL", "apiUrl");
-    rawInfo.put("credentials", rawInfoCreds);
-    IBMGraphDbServiceInfo nullServiceInfo = new IBMGraphDbServiceInfo(null, null, null, null);
-    IBMGraphDbServiceInfo serviceInfo = new IBMGraphDbServiceInfo("id", "apiUrl", "username", "password");
-    assertEquals(nullServiceInfo, creator.createServiceInfo(empty));
-    assertEquals(nullServiceInfo, creator.createServiceInfo(badTypes));
-    assertEquals(serviceInfo, creator.createServiceInfo(rawInfo));
-  }
+    @Test
+    public void testCreateServiceInfo() {
+        Map<String, Object> empty = new HashMap<String, Object>();
+        Map<String, Object> badTypes = new HashMap<String, Object>();
+        badTypes.put("name", 1);
+        Map<String, Object> badCredTypes = new HashMap<String, Object>();
+        badCredTypes.put("username", 1);
+        badCredTypes.put("password", 1);
+        badCredTypes.put("apiURL", 1);
+        badTypes.put("credentials", badCredTypes);
+        Map<String, Object> rawInfo = new HashMap<String, Object>();
+        rawInfo.put("name", "id");
+        Map<String, Object> rawInfoCreds = new HashMap<String, Object>();
+        rawInfoCreds.put("username", "username");
+        rawInfoCreds.put("password", "password");
+        rawInfoCreds.put("apiURL", "apiUrl");
+        rawInfo.put("credentials", rawInfoCreds);
+        IBMGraphDbServiceInfo nullServiceInfo = new IBMGraphDbServiceInfo(null, null, null, null);
+        IBMGraphDbServiceInfo serviceInfo = new IBMGraphDbServiceInfo("id", "apiUrl", "username", "password");
+        assertEquals(nullServiceInfo, creator.createServiceInfo(empty));
+        assertEquals(nullServiceInfo, creator.createServiceInfo(badTypes));
+        assertEquals(serviceInfo, creator.createServiceInfo(rawInfo));
+    }
 
 }

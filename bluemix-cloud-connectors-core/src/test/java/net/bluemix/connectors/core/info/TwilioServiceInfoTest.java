@@ -23,50 +23,49 @@ import org.junit.Test;
 
 public class TwilioServiceInfoTest {
 
-  private TwilioServiceInfo nullInfo;
-  private TwilioServiceInfo info;
-  private TwilioServiceInfo urlInfo;
-  
-  @Before
-  public void setUp() throws Exception {
-    this.nullInfo = new TwilioServiceInfo("twilio", null, null);
-    this.info = new TwilioServiceInfo("twilio", "abc", "123");
-    this.urlInfo = new TwilioServiceInfo("twilio", "https://abc:123@api.twilio.com");
-  }
+    private TwilioServiceInfo nullInfo;
+    private TwilioServiceInfo info;
+    private TwilioServiceInfo urlInfo;
 
-  @After
-  public void tearDown() throws Exception {
-    this.nullInfo = null;
-    this.info = null;
-    this.urlInfo = null;
-  }
-  
-  @Test
-  public void testGetAccountId() {
-    assertNull(nullInfo.getAccountId());
-    assertEquals("abc", info.getAccountId());
-    assertEquals("abc", info.getAccountId());
-  }
-  
-  @Test
-  public void testGetAccountToken() {
-    assertNull(nullInfo.getAuthToken());
-    assertEquals("123", info.getAuthToken());
-    assertEquals("123", info.getAuthToken());
-  }
-  
-  @Test
-  public void testEquals() {
-    assertNotEquals(nullInfo, info);
-    assertNotEquals(nullInfo, null);
-    assertEquals(info, info);
-    assertEquals(new TwilioServiceInfo("twilio", "abc", "123"), info);
-    assertEquals(urlInfo, info);
-  }
-  
-  @Test
-  public void testToString() {
-    assertEquals("TwilioServiceInfo [accountId=abc, authToken=123, id=twilio]", info.toString());
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.nullInfo = new TwilioServiceInfo("twilio", null, null);
+        this.info = new TwilioServiceInfo("twilio", "abc", "123");
+        this.urlInfo = new TwilioServiceInfo("twilio", "https://abc:123@api.twilio.com");
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        this.nullInfo = null;
+        this.info = null;
+        this.urlInfo = null;
+    }
+
+    @Test
+    public void testGetAccountId() {
+        assertNull(nullInfo.getAccountId());
+        assertEquals("abc", info.getAccountId());
+        assertEquals("abc", info.getAccountId());
+    }
+
+    @Test
+    public void testGetAccountToken() {
+        assertNull(nullInfo.getAuthToken());
+        assertEquals("123", info.getAuthToken());
+        assertEquals("123", info.getAuthToken());
+    }
+
+    @Test
+    public void testEquals() {
+        assertNotEquals(nullInfo, info);
+        assertNotEquals(nullInfo, null);
+        assertEquals(info, info);
+        assertEquals(new TwilioServiceInfo("twilio", "abc", "123"), info);
+        assertEquals(urlInfo, info);
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("TwilioServiceInfo{id=twilio, accountId=abc, authToken=123}", info.toString());
+    }
 }
-

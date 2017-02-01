@@ -28,31 +28,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/status")
 public class StatusRestController {
 
-  @Autowired
-  private StatusRepository repo;
-  
-  @RequestMapping(method=RequestMethod.GET)
-  public List<Status> getAll() {
-    return repo.getAll();
-  }
-  
-  @RequestMapping(method=RequestMethod.POST)
-  public Status create(@RequestBody Status status) {
-    repo.add(status);
-    return status;
-  }
-  
-  @RequestMapping(method=RequestMethod.DELETE, value="{id}")
-  public void delete(@PathVariable String id) {
-    repo.remove(repo.get(id));
-  }
-  
-  @RequestMapping(method=RequestMethod.PUT, value="{id}")
-  public Status update(@RequestBody Status status, @PathVariable String id) {
-    Status update = repo.get(id);
-    update.setMsg(status.getMsg());
-    repo.update(update);
-    return update;
-  }
-}
+    @Autowired
+    private StatusRepository repo;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Status> getAll() {
+        return repo.getAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Status create(@RequestBody Status status) {
+        repo.add(status);
+        return status;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "{id}")
+    public void delete(@PathVariable String id) {
+        repo.remove(repo.get(id));
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "{id}")
+    public Status update(@RequestBody Status status, @PathVariable String id) {
+        Status update = repo.get(id);
+        update.setMsg(status.getMsg());
+        repo.update(update);
+        return update;
+    }
+}

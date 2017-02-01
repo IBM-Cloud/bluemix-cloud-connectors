@@ -26,26 +26,25 @@ import org.junit.Test;
 import net.bluemix.connectors.core.info.IBMGraphDbServiceInfo;
 
 public class IBMGraphDbLocalConfigServiceInfoCreatorTest {
-  
-  private IBMGraphDbLocalConfigServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new IBMGraphDbLocalConfigServiceInfoCreator();
-  }
+    private IBMGraphDbLocalConfigServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new IBMGraphDbLocalConfigServiceInfoCreator();
+    }
 
-  @Test
-  public void testCreateServiceInfoStringString() throws URISyntaxException {
-    IBMGraphDbServiceInfo info = creator.createServiceInfo("id", "ibmgraphdb://user:password@graphdb.com");
-    assertEquals(new IBMGraphDbServiceInfo("id", "https://graphdb.com", "user", "password"), info);
-    info = creator.createServiceInfo("id", "ibmgraphdb://ibmgraphdb.com");
-    assertEquals(new IBMGraphDbServiceInfo("id", "https://ibmgraphdb.com", null, null), info);
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testCreateServiceInfoStringString() throws URISyntaxException {
+        IBMGraphDbServiceInfo info = creator.createServiceInfo("id", "ibmgraphdb://user:password@graphdb.com");
+        assertEquals(new IBMGraphDbServiceInfo("id", "https://graphdb.com", "user", "password"), info);
+        info = creator.createServiceInfo("id", "ibmgraphdb://ibmgraphdb.com");
+        assertEquals(new IBMGraphDbServiceInfo("id", "https://ibmgraphdb.com", null, null), info);
+    }
 
 }
-

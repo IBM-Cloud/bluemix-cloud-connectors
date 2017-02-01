@@ -22,12 +22,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StatusRepository extends CouchDbRepositorySupport<Status> {
-  
-  @Autowired
-  public StatusRepository(CouchDbConnector connector) {
-    super(Status.class, connector);
-    initStandardDesignDocument();
-  }
+
+    @Autowired
+    public StatusRepository(CouchDbConnector connector) {
+        super(Status.class, connector);
+        initStandardDesignDocument();
+    }
 
 }
-

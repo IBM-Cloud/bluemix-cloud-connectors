@@ -14,29 +14,29 @@
  * limitations under the License.
  */
 angular.module('cloudantApp.status', ['cloudantApp.services'])
-.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.otherwise({
-    templateUrl: 'js/status/status.html',
-    controller: 'StatusController'
-  });
-}])
-.controller('StatusController', ['$scope', 'StatusService', function($scope, StatusService) {
-  $scope.status = {};
-  $scope.statuses = StatusService.query();
-  $scope.submit = function() {
-	StatusService.save($scope.status).$promise.then(function(savedStatus) {
-	  $scope.statuses.push(savedStatus);
-	  $scope.status.msg = '';
-	}, function(err) {
-	  console.error(err);
-	});  
-  };
-  
-  $scope.delete = function(status, index) {
-    StatusService.delete({id:status.id}).$promise.then(function() {
-      $scope.statuses.splice(index, 1);  
-    }, function(err) {
-      console.error(err);
-    })
-  };
-}]);
+        .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.otherwise({
+                    templateUrl: 'js/status/status.html',
+                    controller: 'StatusController'
+                });
+            }])
+        .controller('StatusController', ['$scope', 'StatusService', function ($scope, StatusService) {
+                $scope.status = {};
+                $scope.statuses = StatusService.query();
+                $scope.submit = function () {
+                    StatusService.save($scope.status).$promise.then(function (savedStatus) {
+                        $scope.statuses.push(savedStatus);
+                        $scope.status.msg = '';
+                    }, function (err) {
+                        console.error(err);
+                    });
+                };
+
+                $scope.delete = function (status, index) {
+                    StatusService.delete({id: status.id}).$promise.then(function () {
+                        $scope.statuses.splice(index, 1);
+                    }, function (err) {
+                        console.error(err);
+                    })
+                };
+            }]);

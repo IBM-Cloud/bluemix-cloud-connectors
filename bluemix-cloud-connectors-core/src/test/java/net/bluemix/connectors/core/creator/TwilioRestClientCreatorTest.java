@@ -25,24 +25,23 @@ import org.junit.Test;
 import com.twilio.sdk.TwilioRestClient;
 
 public class TwilioRestClientCreatorTest {
-  
-  private TwilioRestClientCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new TwilioRestClientCreator();
-  }
+    private TwilioRestClientCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new TwilioRestClientCreator();
+    }
 
-  @Test
-  public void testCreate() {
-    TwilioServiceInfo info = new TwilioServiceInfo("twilio", "AC12345678ac12345678ac123456781234", "1234511c2209d62fab4766fa75435f1e");
-    assertTrue(this.creator.create(info, null) instanceof TwilioRestClient);
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testCreate() {
+        TwilioServiceInfo info = new TwilioServiceInfo("twilio", "AC12345678ac12345678ac123456781234", "1234511c2209d62fab4766fa75435f1e");
+        assertTrue(this.creator.create(info, null) instanceof TwilioRestClient);
+    }
 
 }
-

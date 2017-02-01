@@ -25,14 +25,13 @@ import org.springframework.cloud.CloudFactory;
 
 @ApplicationScoped
 public class CloudantBean {
-  
-  private static Cloud cloud = new CloudFactory().getCloud();
-  
-  @Produces
-  public StatusRepository statusRepository() {
-    CouchDbInstance db = cloud.getServiceConnector("connectors-sample", CouchDbInstance.class, null /* default config */);
-    return new StatusRepository(new StdCouchDbConnector("status", db));
-  }
+
+    private static Cloud cloud = new CloudFactory().getCloud();
+
+    @Produces
+    public StatusRepository statusRepository() {
+        CouchDbInstance db = cloud.getServiceConnector("connectors-sample", CouchDbInstance.class, null /* default config */);
+        return new StatusRepository(new StdCouchDbConnector("status", db));
+    }
 
 }
-

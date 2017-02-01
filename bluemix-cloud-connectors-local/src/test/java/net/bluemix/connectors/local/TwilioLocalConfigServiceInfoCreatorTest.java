@@ -23,24 +23,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TwilioLocalConfigServiceInfoCreatorTest {
-  
-  private TwilioLocalConfigServiceInfoCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new TwilioLocalConfigServiceInfoCreator();
-  }
+    private TwilioLocalConfigServiceInfoCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new TwilioLocalConfigServiceInfoCreator();
+    }
 
-  @Test
-  public void testCreateServiceInfoStringString() {
-    TwilioServiceInfo info = creator.createServiceInfo("twilio", "twilio://abc:123@api.twilio.com");
-    assertEquals(new TwilioServiceInfo("twilio", "http://abc:123@api.twilio.com"), info);
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testCreateServiceInfoStringString() {
+        TwilioServiceInfo info = creator.createServiceInfo("twilio", "twilio://abc:123@api.twilio.com");
+        assertEquals(new TwilioServiceInfo("twilio", "http://abc:123@api.twilio.com"), info);
+    }
 
 }
-

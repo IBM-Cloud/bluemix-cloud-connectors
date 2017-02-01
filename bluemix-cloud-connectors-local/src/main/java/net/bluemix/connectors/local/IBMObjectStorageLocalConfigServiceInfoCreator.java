@@ -24,31 +24,33 @@ import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 import net.bluemix.connectors.core.info.IBMObjectStorageServiceInfo;
 
 /**
- * Creates service info for the Object Storage service when the app is running locally.
- * @author ryanjbaxter
+ * Creates service info for the Object Storage service when the app is running
+ * locally.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class IBMObjectStorageLocalConfigServiceInfoCreator
         extends LocalConfigServiceInfoCreator<IBMObjectStorageServiceInfo> {
-  private static final Logger LOG = Logger.getLogger(IBMObjectStorageLocalConfigServiceInfoCreator.class.getName());
-  
-  /**
-   * Constructor.
-   */
-  public IBMObjectStorageLocalConfigServiceInfoCreator() {
-    super(IBMObjectStorageServiceInfo.SCHEME);
-  }
 
-  @Override
-  public IBMObjectStorageServiceInfo createServiceInfo(String id, String uri) {
-    try {
-      return new IBMObjectStorageServiceInfo(id, uri);
-    } catch (URISyntaxException e) {
-      LOG.logp(Level.WARNING, IBMObjectStorageLocalConfigServiceInfoCreator.class.getName(), 
-              "createServiceInfo", "Invalid URI: " + uri, e);
-      return null;
+    private static final Logger LOG = Logger.getLogger(IBMObjectStorageLocalConfigServiceInfoCreator.class.getName());
+
+    /**
+     * Constructor.
+     */
+    public IBMObjectStorageLocalConfigServiceInfoCreator() {
+        super(IBMObjectStorageServiceInfo.SCHEME);
     }
-  }
+
+    @Override
+    public IBMObjectStorageServiceInfo createServiceInfo(String id, String uri) {
+        try {
+            return new IBMObjectStorageServiceInfo(id, uri);
+        } catch (URISyntaxException e) {
+            LOG.logp(Level.WARNING, IBMObjectStorageLocalConfigServiceInfoCreator.class.getName(),
+                    "createServiceInfo", "Invalid URI: " + uri, e);
+            return null;
+        }
+    }
 
 }
-

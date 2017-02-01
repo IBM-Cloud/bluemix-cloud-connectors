@@ -1,5 +1,5 @@
 /*
- * Copyright IBM Corp. 2015
+ * Copyright IBM Corp. 2017
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,20 @@ import org.springframework.cloud.service.ServiceConnectorConfig;
 
 import com.twilio.sdk.TwilioRestClient;
 
-public class TwilioRestClientCreator extends AbstractServiceConnectorCreator<TwilioRestClient, TwilioServiceInfo> {
+/**
+ * Class which creates a {@link com.twilio.sdk.TwilioRestClient} object using
+ * the service credentials for the Twilio Service service.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
+ * @author Hans W. Uhlig <hans.uhlig@ibm.com>
+ */
+public class TwilioRestClientCreator
+        extends AbstractServiceConnectorCreator<TwilioRestClient, TwilioServiceInfo> {
 
-  @Override
-  public TwilioRestClient create(TwilioServiceInfo serviceInfo,
-          ServiceConnectorConfig serviceConnectorConfig) {
-    return new TwilioRestClient(serviceInfo.getAccountId(), serviceInfo.getAuthToken());
-  }
+    @Override
+    public TwilioRestClient create(TwilioServiceInfo serviceInfo,
+            ServiceConnectorConfig serviceConnectorConfig) {
+        return new TwilioRestClient(serviceInfo.getAccountId(), serviceInfo.getAuthToken());
+    }
+
 }
-

@@ -21,20 +21,20 @@ import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 
 /**
  * Local configuration for creating Twilio service info when running locally.
- * @author ryanjbaxter
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class TwilioLocalConfigServiceInfoCreator extends LocalConfigServiceInfoCreator<TwilioServiceInfo> {
 
-  public TwilioLocalConfigServiceInfoCreator() {
-    //Fake scheme to identify the service, its only for local configuration anyways so not a big deal
-    super("twilio");
-  }
+    public TwilioLocalConfigServiceInfoCreator() {
+        //Fake scheme to identify the service, its only for local configuration anyways so not a big deal
+        super("twilio");
+    }
 
-  @Override
-  public TwilioServiceInfo createServiceInfo(String id, String uri) {
-    return new TwilioServiceInfo(id, uri.replace("twilio", "https"));
-  }
+    @Override
+    public TwilioServiceInfo createServiceInfo(String id, String uri) {
+        return new TwilioServiceInfo(id, uri.replace("twilio", "https"));
+    }
 
 }
-

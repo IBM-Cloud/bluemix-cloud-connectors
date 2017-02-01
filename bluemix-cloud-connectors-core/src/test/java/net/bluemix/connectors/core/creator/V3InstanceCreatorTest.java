@@ -26,25 +26,25 @@ import org.springframework.cloud.service.ServiceConnectorConfig;
 import net.bluemix.connectors.core.info.IBMObjectStorageServiceInfo;
 
 public class V3InstanceCreatorTest {
-  
-  private V3InstanceCreator creator;
 
-  @Before
-  public void setUp() throws Exception {
-    this.creator = new V3InstanceCreator();
-  }
+    private V3InstanceCreator creator;
 
-  @After
-  public void tearDown() throws Exception {
-    this.creator = null;
-  }
+    @Before
+    public void setUp() throws Exception {
+        this.creator = new V3InstanceCreator();
+    }
 
-  @Test
-  public void testCreate() {
-    IBMObjectStorageServiceInfo serviceInfo = new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project", 
-            "projectId", "region", "userId", "username");
-    assertTrue(creator.create(serviceInfo, new ServiceConnectorConfig(){}) instanceof V3);
-  }
+    @After
+    public void tearDown() throws Exception {
+        this.creator = null;
+    }
+
+    @Test
+    public void testCreate() {
+        IBMObjectStorageServiceInfo serviceInfo = new IBMObjectStorageServiceInfo("id", "authUrl", "domainId", "domainName", "password", "project",
+                "projectId", "region", "userId", "username");
+        assertTrue(creator.create(serviceInfo, new ServiceConnectorConfig() {
+        }) instanceof V3);
+    }
 
 }
-

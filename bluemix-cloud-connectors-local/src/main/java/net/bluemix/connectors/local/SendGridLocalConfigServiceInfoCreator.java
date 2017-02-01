@@ -19,24 +19,24 @@ import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 import org.springframework.cloud.service.common.SmtpServiceInfo;
 
 /**
- * Creates an SmtpServiceInfo object when the cloud application is running locally.  The URI
- * must begin with smtp.
- * @author ryanjbaxter
+ * Creates an SmtpServiceInfo object when the cloud application is running
+ * locally. The URI must begin with smtp.
+ *
+ * @author Ryan J. Baxter <rbaxter@apache.org>
  *
  */
 public class SendGridLocalConfigServiceInfoCreator extends LocalConfigServiceInfoCreator<SmtpServiceInfo> {
 
-  /**
-   * Constructor.
-   */
-  public SendGridLocalConfigServiceInfoCreator() {
-    super(SmtpServiceInfo.SMTP_SCHEME);
-  }
+    /**
+     * Constructor.
+     */
+    public SendGridLocalConfigServiceInfoCreator() {
+        super(SmtpServiceInfo.SMTP_SCHEME);
+    }
 
-  @Override
-  public SmtpServiceInfo createServiceInfo(String id, String uri) {
-    return new SmtpServiceInfo(id, uri);
-  }
+    @Override
+    public SmtpServiceInfo createServiceInfo(String id, String uri) {
+        return new SmtpServiceInfo(id, uri);
+    }
 
 }
-

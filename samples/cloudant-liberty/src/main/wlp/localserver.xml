@@ -14,16 +14,16 @@
  * limitations under the License.
 -->
 <server description="cloudant sample server">
-  <featureManager>
-    <feature>jaxrs-1.1</feature>
-    <feature>localConnector-1.0</feature>
-    <feature>cdi-1.0</feature>
-    <feature>servlet-3.1</feature>
-  </featureManager>
-  <httpEndpoint id="defaultHttpEndpoint"
+    <featureManager>
+        <feature>jaxrs-1.1</feature>
+        <feature>localConnector-1.0</feature>
+        <feature>cdi-1.0</feature>
+        <feature>servlet-3.1</feature>
+    </featureManager>
+    <httpEndpoint id="defaultHttpEndpoint"
                   host="*"
                   httpPort="${httpPort}" >
-    <tcpOptions soReuseAddr="true"/>
-  </httpEndpoint>
-  <application name="cloudant-sample" context-root="/" location="${appLocation}" type="war" />
+        <tcpOptions soReuseAddr="true"/>
+    </httpEndpoint>
+    <application name="cloudant-sample" context-root="/" location="${appLocation}" type="war" />
 </server>
