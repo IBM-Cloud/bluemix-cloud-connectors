@@ -1,5 +1,7 @@
 net.bluemix.connectors.core.creator.CloudantInstanceCreator
 net.bluemix.connectors.core.creator.ComposeForMongoDBCreator
+net.bluemix.connectors.core.creator.DatabasesForMongoDBCreator
+net.bluemix.connectors.core.creator.DatabasesForRedisCreator
 net.bluemix.connectors.core.creator.MessageHubConsumerCreator
 net.bluemix.connectors.core.creator.MessageHubProducerCreator
 net.bluemix.connectors.core.creator.TwilioRestClientCreator
