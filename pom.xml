@@ -20,8 +20,8 @@
     <version>0.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bluemix-cloud-connectors</name>
-    <description>Libraries to help apps deployed to Bluemix access service credentials.</description>
-    <url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors</url>
+    <description>Libraries to help apps deployed to IBM Cloud access service credentials.</description>
+    <url>https://github.com/IBM-Cloud/bluemix-cloud-connectors</url>
 
     <!-- ====================================================================== -->
     <!-- L I C E N S E S -->
@@ -49,6 +49,12 @@
             <organization>IBM</organization>
             <organizationUrl>http://ibm.com</organizationUrl>
         </developer>
+        <developer>
+            <name>Ozzy Osborne</name>
+            <email>ozzy@ca.ibm.com</email>
+            <organization>IBM</organization>
+            <organizationUrl>http://ibm.com</organizationUrl>
+        </developer>        
     </developers>
 
     <!-- ====================================================================== -->
@@ -64,16 +70,16 @@
     <!-- CI  M A N A G E M E N T -->
     <!-- ====================================================================== -->
     <ciManagement>
-        <url>https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors</url>
+        <url>https://travis-ci.org/IBM-Cloud/bluemix-cloud-connectors</url>
     </ciManagement>
 
     <!-- ====================================================================== -->
     <!-- S C M -->
     <!-- ====================================================================== -->
     <scm>
-        <url>git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</url>
-        <connection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</connection>
-        <developerConnection>scm:git:git@github.com:IBM-Bluemix/bluemix-cloud-connectors.git</developerConnection>
+        <url>git@github.com:IBM-Cloud/bluemix-cloud-connectors.git</url>
+        <connection>scm:git:git@github.com:IBM-Cloud/bluemix-cloud-connectors.git</connection>
+        <developerConnection>scm:git:git@github.com:IBM-Cloud/bluemix-cloud-connectors.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -82,7 +88,7 @@
     <!-- ====================================================================== -->
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/IBM-Bluemix/bluemix-cloud-connectors/issues</url>
+        <url>https://github.com/IBM-Cloud/bluemix-cloud-connectors/issues</url>
     </issueManagement>
 
     <!-- ====================================================================== -->
@@ -137,67 +143,6 @@
             <groupId>org.pacesys</groupId>
             <artifactId>openstack4j</artifactId>
             <version>3.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.10.1.0</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>conversation</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>discovery</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>document-conversion</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>language-translator</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>natural-language-classifier</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>personality-insights</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>retrieve-and-rank</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>speech-to-text</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>text-to-speech</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>tone-analyzer</artifactId>
-            <version>${watson.developer_cloud.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>tradeoff-analytics</artifactId>
-            <version>${watson.developer_cloud.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>

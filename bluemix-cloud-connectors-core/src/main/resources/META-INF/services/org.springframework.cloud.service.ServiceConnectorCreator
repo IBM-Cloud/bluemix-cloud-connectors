@@ -1,13 +1,5 @@
 net.bluemix.connectors.core.creator.CloudantInstanceCreator
-net.bluemix.connectors.core.creator.ComposeForMongoDBCreator
 net.bluemix.connectors.core.creator.DatabasesForMongoDBCreator
 net.bluemix.connectors.core.creator.DatabasesForRedisCreator
-net.bluemix.connectors.core.creator.MessageHubConsumerCreator
-net.bluemix.connectors.core.creator.MessageHubProducerCreator
 net.bluemix.connectors.core.creator.TwilioRestClientCreator
-net.bluemix.connectors.core.creator.V3InstanceCreator
-net.bluemix.connectors.core.creator.WatsonConversationCreator
-net.bluemix.connectors.core.creator.WatsonDiscoveryCreator
-net.bluemix.connectors.core.creator.WatsonLanguageTranslatorCreator
-net.bluemix.connectors.core.creator.WatsonNaturalLanguageClassifierCreator
-net.bluemix.connectors.core.creator.WatsonToneAnalyzerCreator
+
