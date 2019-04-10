@@ -31,7 +31,7 @@ import org.springframework.cloud.cloudfoundry.Tags;
  */
 public class TwilioServiceInfoCreator extends CloudFoundryServiceInfoCreator<TwilioServiceInfo> {
 
-    private static final String TWILIO_API_URI = "https://api.twilio.com";
+    private static final String TWILIO_API_URI = "https://api.twilio.com/";
 
     /**
      * Constructor.
@@ -45,7 +45,7 @@ public class TwilioServiceInfoCreator extends CloudFoundryServiceInfoCreator<Twi
         Object credObject = serviceData.get("credentials");
         if (credObject instanceof Map<?, ?>) {
             Map<String, Object> credentials = (Map<String, Object>) credObject;
-            Object urlObj = credentials.get("url");
+            Object urlObj = credentials.get("twilio_api_base_url");
             if (urlObj instanceof String) {
                 return TWILIO_API_URI.equals((String) urlObj);
             }
@@ -65,8 +65,8 @@ public class TwilioServiceInfoCreator extends CloudFoundryServiceInfoCreator<Twi
         }
         if (credObject instanceof Map<?, ?>) {
             Map<String, Object> credentials = (Map<String, Object>) credObject;
-            Object accoutIdObj = credentials.get("accountSID");
-            Object authTokenObj = credentials.get("authToken");
+            Object accoutIdObj = credentials.get("twilio_account_sid");
+            Object authTokenObj = credentials.get("twilio_auth_token");
             if (accoutIdObj instanceof String) {
                 accountId = (String) accoutIdObj;
             }
