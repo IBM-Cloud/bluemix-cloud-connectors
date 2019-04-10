@@ -25,14 +25,7 @@ In addition to the services supported by the Spring Cloud Connectors project the
 Bluemix Cloud Connectors project supports the following services
 
 * Cloudant - via the [Ektorp library](http://ektorp.org/)
-* SendGrid - SendGrid is already supported by the Spring Cloud Connectors project but due to
-the way the service credentials are created in VCAP_SERVICES it did not work
 * Twilio - via the [Twilio client library](https://www.twilio.com/docs/java/install)
-* IBM Graph DB - via REST
-* Object Storage - via [OpenStack4J](http://www.openstack4j.com/)
-
-#### IBM Graph DB Service
-A quick note about the IBM Graph DB Service support.  There is no Java SDK for this service so the Bluemix Cloud Connectors can only provide you with the service credentials for this service.  You should use this information to then make REST requests to the service.
 
 ## When To Use This Project
 If you are using the Liberty Runtime in Bluemix you can take advantage of the
@@ -165,22 +158,6 @@ protocol (which is something we made up), for example `couchdb://user:pass@local
 The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately Twilio operates over
 HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `twilio`
 protocol (which is something we made up), for example `twilio://user:pass@localhost:5984`.
-
-#### Graph DB
-
-The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately the Graph DB service 
-operates over
-HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `ibmgraphdb`
-protocol (which is something we made up), for example `ibmgraphdb://user:pass@localhost:5984`.
-
-#### Object Storage
-
-The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately the Object Storage service 
-operates over
-HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `swiftobjectstorage`
-protocol (which is something we made up), for example `swiftobjectstorage://user:pass@identity.open.softlayer.com/project/domainName`.
-
-In addition, in order to use the OpenStack4J library you need to provide the `project` and `domainName` information for your service instance.  To do thise when running locally we use path parameters in the URL.  The hostname for the URL should always be `identity.open.softlayer.com`.  The first path parameter is the `project` value, and the second path parameter should be the `domainName` value from your service instance credentials.
 
 ## Development
 
