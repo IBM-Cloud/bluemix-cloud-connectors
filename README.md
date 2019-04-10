@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors)
+[![Build Status](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/bluemix-cloud-connectors) [![Lifecyle](https://img.shields.io/osslifecycle/IBM-Cloud/bluemix-cloud-connectors.svg)]
 
 ## About
 This project is meant to simplify the way Java developers access services
