@@ -109,8 +109,6 @@
     <!-- P R O P E R T I E S -->
     <!-- ====================================================================== -->
     <properties>
-        <spring.cloud.connectors.version>2.0.5.RELEASE</spring.cloud.connectors.version>
-        <watson.developer_cloud.version>3.5.3</watson.developer_cloud.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>       
     </properties>

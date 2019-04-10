@@ -2,8 +2,8 @@
 
 ## About
 This project is meant to simplify the way Java developers access services
-when deploying apps to IBM Bluemix.  When leveraging a bound service in an app
-deployed to Bluemix you need to do go through a number of steps regardless of the
+when deploying apps to IBM Cloud (formerly Bluemix).  When leveraging a bound service in an app
+deployed to IBM Cloud you need to do go through a number of steps regardless of the
 service you bound.
 
 1.  Access the value of the VCAP_SERVICES environment variable.
@@ -16,19 +16,18 @@ Since these steps are pretty much repeated multiple times across all Java apps i
 opportunity to create a library that takes care of writing this mundane code.  The
 [Spring Cloud Connectors project](http://cloud.spring.io/spring-cloud-connectors/)
 already does this for [some services](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-cloudfoundry-connector)
-that are common across all Cloud Foundry deployments.  However there are many services in Bluemix
+that are common across all Cloud Foundry deployments.  However there are many services in IBM Cloud
 that are not part of this project.  This project builds upon the Spring Cloud Connectors
-project and provides connectors for the services within Bluemix.
+project and provides connectors for the services within IBM Cloud.
 
 ### Supported Services
-In addition to the services supported by the Spring Cloud Connectors project the
-Bluemix Cloud Connectors project supports the following services
+In addition to the services supported by the Spring Cloud Connectors project this project supports the following services
 
 * Cloudant - via the [Ektorp library](http://ektorp.org/)
 * Twilio - via the [Twilio client library](https://www.twilio.com/docs/java/install)
 
 ## When To Use This Project
-If you are using the Liberty Runtime in Bluemix you can take advantage of the
+If you are using the Liberty Runtime in IBM Cloud you can take advantage of the
 [auto-configuration](https://www.ng.bluemix.net/docs/#starters/liberty/index.html#automaticconfigurationofboundservices)
 features which may do the same thing as this project so it doesn't make sense to use this
 project in your app in that case.  However if you are not using the Liberty Runtime and you are using
@@ -62,7 +61,7 @@ If you are building a Spring app you will also need to add the following Sping C
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-spring-service-connector</artifactId>
-      <version>1.2.2.RELEASE</version>
+      <version>2.1.3.RELEASE</version>
     </dependency>
 ```
 
@@ -96,10 +95,10 @@ CouchDbInstance couchDb = cloud.getServiceConnector(serviceId, CouchDbInstance.c
 For more detailed information on how this works you should read the
 [Spring Cloud Connectors documentation](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-core).
 
-There is a sample JEE app using the Bluemix Cloud Connectors project in the samples/cloudant-liberty folder.
+There is a sample JEE app using the IBM Cloud Cloud Connectors project in the samples/cloudant-liberty folder.
 
 ###  Accessing The Service Credentials In A Spring App
-When you are using Spring you can easily create beans for services you have bound to your app in Bluemix.
+When you are using Spring you can easily create beans for services you have bound to your app in IBM Cloud.
 
 ```
 public class Config {
@@ -119,17 +118,17 @@ This bean can now be injected into other classes and used to access the service 
 For more detailed information see the
 [Spring Cloud Connectors documentation](https://github.com/spring-cloud/spring-cloud-connectors/tree/master/spring-cloud-spring-service-connector).
 
-There is a sample Spring app using the Bluemix Cloud Connectors project in the samples/cloudant-spring folder.
+There is a sample Spring app using the IBM Cloud Cloud Connectors project in the samples/cloudant-spring folder.
 
 ### When Running Locally
-When building apps for Bluemix, you usually want to also run your application locally during
+When building apps for IBM Cloud, you usually want to also run your application locally during
 development.  Developers have come up with various ways of achieving this.  Some set a VCAP_SERVICES environment
 variable on their development machine.  Others write code that tries to determine if the application is running
 locally or in the cloud.  In Spring you can use something like Spring profiles to enable certain configuration beans
 when running in the cloud and running locally.  
 
 The Spring Cloud Connectors project has a simple way of allowing developers
-to run their Bluemix apps in the cloud and locally without having to write any extra code.  You can read more about how this works
+to run their IBM Cloud apps in the cloud and locally without having to write any extra code.  You can read more about how this works
 in the [Spring Cloud Connectors project](https://github.com/spring-cloud/spring-cloud-connectors/tree/3ec88aba9ed85f2b09d2cafb620ad1d4a28aaa9d/spring-cloud-localconfig-connector).
 
 In short, create a file called `spring-cloud-bootstrap.properties` in the project and add it to the project classpath.
@@ -150,13 +149,13 @@ needed to access the service. Here is a sample
 #### Cloudant/CouchDB
 
 The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately Cloudant/CouchDB operates over
-HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `couchdb`
+HTTP so it is hard for the IBM Cloud Cloud Connectors project to know what connector to use.  For that reason you must use the `couchdb`
 protocol (which is something we made up), for example `couchdb://user:pass@localhost:5984`.
 
 #### Twilio
 
 The Spring Cloud Connectors project assumes that the `spring.cloud.{id}` is a URL.  Unfortunately Twilio operates over
-HTTP so it is hard for the Bluemix Cloud Connectors project to know what connector to use.  For that reason you must use the `twilio`
+HTTP so it is hard for the IBM Cloud Cloud Connectors project to know what connector to use.  For that reason you must use the `twilio`
 protocol (which is something we made up), for example `twilio://user:pass@localhost:5984`.
 
 ## Development
