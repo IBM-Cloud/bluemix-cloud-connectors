@@ -28,8 +28,8 @@
     <!-- ====================================================================== -->
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-localconfig-connector</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cloud-connectors</artifactId>
             <version>${spring.cloud.connectors.version}</version>
         </dependency>
         <dependency>
