@@ -115,16 +115,11 @@ public abstract class DatabasesForCloudServiceInfoCreator<SI extends ServiceInfo
     }
 
     protected String getSchemeFromCredentials(Map<String, Object> credentials) {
-        Map<String, Object> connection = (Map<String, Object>) credentials.get("connection");
-        if (connection != null) {
-            Map<String, Object> details = (Map<String, Object>) connection.get(connectionName);
-            if (details != null) {
-                List<Map<String, Object>> hosts = (List<Map<String, Object>>) details.get("hosts");
-                if (hosts != null) {
-                    Object h = hosts.get(0).get("protocol");
-                    if (h != null)
-                        return h.toString();
-                }
+        Map<String,Object> connection = (Map<String, Object>) credentials.get("connection");
+        if(connection!=null){
+            Map<String,Object> details = (Map<String, Object>) connection.get(connectionName);
+            if(details!=null){
+               return (String)details.get("scheme");
             }
         }
         return null;
