@@ -25,6 +25,9 @@ In addition to the services supported by the Spring Cloud Connectors project thi
 
 * Cloudant - via the [Ektorp library](http://ektorp.org/)
 * Twilio - via the [Twilio client library](https://www.twilio.com/docs/java/install)
+* [Databases for PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql)
+* [Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb)
+* [Databases for Redis](https://cloud.ibm.com/catalog/services/databases-for-redis)
 
 ## When To Use This Project
 If you are using the Liberty Runtime in IBM Cloud you can take advantage of the
@@ -46,12 +49,12 @@ Add the following dependency to you Maven/Gradle project.
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
-      <version>0.0.1.RC6</version>
+      <version>0.0.3</version>
     </dependency>
     <dependency>
       <groupId>net.bluemix</groupId>
       <artifactId>bluemix-cloud-connectors-local</artifactId>
-      <version>0.0.1.RC6</version>
+      <version>0.0.3</version>
     </dependency>
 ```
 
